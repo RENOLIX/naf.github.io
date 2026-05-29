@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Mail, MapPin, Phone, Share2 } from "lucide-react";
 import BrandLogo from "@/components/brand-logo.tsx";
+import SiteLogo from "@/components/site-logo.tsx";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -20,10 +21,7 @@ export default function Footer() {
 
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 py-12 md:grid-cols-4 md:px-6">
         <div>
-          <Link to="/" className="mb-4 flex items-center gap-3">
-            <img src="/naf.github.io/naf-mark.svg" alt="NAF Factory" className="h-12 w-12" />
-            <span className="font-display text-3xl font-black">NAF FACTORY</span>
-          </Link>
+          <SiteLogo className="mb-4" markClassName="h-16" textClassName="text-2xl md:text-3xl" />
           <p className="text-sm leading-relaxed text-white/70">Votre partenaire de confiance pour tous vos besoins en materiaux de construction professionnels.</p>
           <div className="mt-4 flex gap-3">
             {[1, 2, 3].map((item) => (
@@ -50,7 +48,7 @@ export default function Footer() {
       <div className="border-t border-white/10 py-4">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 text-xs text-white/50 md:flex-row md:px-6">
           <span>© {year} NAF Factory. Tous droits reserves.</span>
-          <span>Distributeur Officiel Sika · Terraco · Lafarge</span>
+          <span>Distributeur Officiel Sika - Terraco - Lafarge</span>
         </div>
       </div>
     </footer>

@@ -22,9 +22,9 @@ export default function APropos() {
     <div className="bg-background">
       <div className="relative overflow-hidden px-4 py-20" style={{ background: "linear-gradient(135deg, #18284b 60%, #2f66d8)" }}>
         <div className="relative z-10 mx-auto max-w-7xl">
-          <p className="mb-2 text-xs font-bold uppercase tracking-widest text-white/60">Notre histoire</p>
+          <p className="mb-2 text-xs font-bold uppercase tracking-widest text-white">Notre histoire</p>
           <h1 className="font-display text-5xl font-black text-white md:text-6xl">A PROPOS DE<br /><span className="text-secondary">NAF FACTORY</span></h1>
-          <p className="mt-4 max-w-xl text-lg leading-relaxed text-white/80">Depuis 2008, NAF Factory accompagne les professionnels avec des materiaux de construction fiables et un service commercial reactif.</p>
+          <p className="mt-4 max-w-xl text-lg leading-relaxed text-white">Depuis 2008, NAF Factory accompagne les professionnels avec des materiaux de construction fiables et un service commercial reactif.</p>
         </div>
       </div>
 

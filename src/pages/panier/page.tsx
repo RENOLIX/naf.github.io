@@ -43,9 +43,9 @@ export default function Panier() {
     <div className="min-h-screen bg-background">
       <div className="bg-primary px-4 py-12">
         <div className="mx-auto max-w-7xl">
-          <p className="mb-1 text-xs font-bold uppercase tracking-widest text-white/70">Mon Espace</p>
+          <p className="mb-1 text-xs font-bold uppercase tracking-widest text-white">Mon Espace</p>
           <h1 className="font-display text-5xl font-black text-white">MON PANIER</h1>
-          <p className="mt-1 text-white/70">{totalItems()} article{totalItems() !== 1 ? "s" : ""}</p>
+          <p className="mt-1 text-white">{totalItems()} article{totalItems() !== 1 ? "s" : ""}</p>
         </div>
       </div>
 

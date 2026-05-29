@@ -45,10 +45,10 @@ export default function Produits() {
         {currentBrand && <img src={currentBrand.heroImage} alt="" className="absolute inset-0 h-full w-full object-cover opacity-18 mix-blend-screen" />}
         <div className="relative mx-auto grid max-w-7xl gap-8 md:grid-cols-[1fr_auto] md:items-center">
           <div>
-            <p className="mb-2 text-xs font-bold uppercase tracking-widest text-white/70">{currentBrand ? `Univers ${currentBrand.name}` : "Catalogue"}</p>
-            <h1 className="font-display text-5xl font-black">{currentBrand ? currentBrand.name.toUpperCase() : "NOS PRODUITS"}</h1>
-            <p className="mt-3 max-w-xl text-white/80">{currentBrand ? currentBrand.tagline : "Selection professionnelle Sika, Terraco et Lafarge pour chantiers algeriens."}</p>
-            {currentBrand && <p className="mt-2 max-w-xl text-sm text-white/65">{currentBrand.mood}</p>}
+            <p className="mb-2 text-xs font-bold uppercase tracking-widest text-white">{currentBrand ? `Univers ${currentBrand.name}` : "Catalogue"}</p>
+            <h1 className="font-display text-5xl font-black text-white">{currentBrand ? currentBrand.name.toUpperCase() : "NOS PRODUITS"}</h1>
+            <p className="mt-3 max-w-xl text-white">{currentBrand ? currentBrand.tagline : "Selection professionnelle Sika, Terraco et Lafarge pour chantiers algeriens."}</p>
+            {currentBrand && <p className="mt-2 max-w-xl text-sm text-white/85">{currentBrand.mood}</p>}
           </div>
           {currentBrand && <BrandLogo brand={selectedBrand as Brand} className="hidden md:inline-flex" />}
         </div>

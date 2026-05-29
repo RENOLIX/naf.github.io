@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils.ts";
 import type { Brand } from "@/lib/products.ts";
+import { cn } from "@/lib/utils.ts";
 
 type BrandLogoProps = {
   brand: Brand;
@@ -7,30 +7,30 @@ type BrandLogoProps = {
 };
 
 export default function BrandLogo({ brand, className }: BrandLogoProps) {
-  if (brand === "sika") {
-    return (
-      <div className={cn("relative inline-flex items-center justify-center bg-[#f5b325] px-5 py-3 shadow-sm", className)}>
-        <div className="absolute inset-x-5 top-0 h-full bg-[#d8282f]" style={{ clipPath: "polygon(15% 0, 85% 0, 100% 100%, 0 100%)" }} />
-        <span className="relative font-display text-4xl font-black italic tracking-tight text-white">Sika</span>
-      </div>
-    );
-  }
-
-  if (brand === "terraco") {
-    return (
-      <div className={cn("inline-flex items-center gap-3 rounded-full bg-white px-5 py-3 shadow-sm", className)}>
-        <span className="grid h-9 w-9 place-items-center rounded-full bg-[#008e62]">
-          <span className="h-5 w-5 rounded-full border-4 border-white" />
-        </span>
-        <span className="font-display text-4xl font-black tracking-tight text-[#008e62]">terraco</span>
-      </div>
-    );
-  }
-
+  const logos: Record<Brand, { src: string; alt: string; frame: string; img: string }> = {
+    sika: {
+      src: "/naf.github.io/brands/sika.png",
+      alt: "Sika",
+      frame: "bg-white/95",
+      img: "h-16 w-auto object-contain",
+    },
+    terraco: {
+      src: "/naf.github.io/brands/terraco.png",
+      alt: "Terraco",
+      frame: "bg-white/95",
+      img: "h-12 w-auto object-contain",
+    },
+    lafarge: {
+      src: "/naf.github.io/brands/lafarge.png",
+      alt: "Lafarge",
+      frame: "bg-white/90",
+      img: "h-12 w-auto object-contain",
+    },
+  };
+  const logo = logos[brand];
   return (
-    <div className={cn("inline-flex items-center gap-3 bg-white px-5 py-3 shadow-sm", className)}>
-      <span className="grid h-10 w-10 place-items-center rounded-sm bg-[#00925a] text-3xl font-black italic text-white">L</span>
-      <span className="font-display text-4xl font-black uppercase tracking-tight text-black">Lafarge</span>
+    <div className={cn("inline-flex items-center justify-center rounded-lg px-4 py-3 shadow-sm ring-1 ring-black/5", logo.frame, className)}>
+      <img src={logo.src} alt={logo.alt} className={logo.img} />
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { Mail, Menu, Phone, ShoppingCart, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import LiquidGlass from "@/components/liquid-glass.tsx";
+import SiteLogo from "@/components/site-logo.tsx";
 import { useCart } from "@/hooks/use-cart.ts";
 import { cn } from "@/lib/utils.ts";
 
@@ -23,21 +24,18 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="hidden items-center justify-between bg-primary px-4 py-2 text-sm text-primary-foreground md:flex">
+      <div className="hidden items-center justify-between bg-primary px-4 py-2 text-sm text-white md:flex">
         <div className="flex items-center gap-6">
           <span className="flex items-center gap-1.5"><Phone className="h-3.5 w-3.5" /> +213 (0) 555 000 000</span>
           <span className="flex items-center gap-1.5"><Mail className="h-3.5 w-3.5" /> contact@naf-factory.dz</span>
         </div>
-        <span className="font-medium tracking-wide">Distributeur Officiel SIKA · TERRACO · LAFARGE</span>
+        <span className="font-medium tracking-wide">Distributeur Officiel SIKA - TERRACO - LAFARGE</span>
       </div>
 
       <header className="sticky top-0 z-50">
-        <LiquidGlass borderRadius={0} blur={32} refraction={14} variant="dark" className="w-full">
+        <LiquidGlass borderRadius={0} blur={22} refraction={14} variant="dark" className="w-full">
           <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-6">
-            <Link to="/" className="flex items-center gap-3">
-              <img src="/naf.github.io/naf-mark.svg" alt="NAF Factory" className="h-10 w-10" />
-              <span className="hidden font-display text-2xl font-black text-white sm:block">NAF</span>
-            </Link>
+            <SiteLogo markClassName="h-10 sm:h-11" textClassName="hidden lg:block" />
 
             <nav className="hidden items-center gap-1 md:flex">
               {NAV_LINKS.map((link) => {
@@ -51,7 +49,7 @@ export default function Navbar() {
                   <Link
                     key={link.href}
                     to={link.href}
-                    className={cn("rounded-lg px-3 py-1.5 text-sm font-medium text-white/75 transition-colors hover:bg-white/10 hover:text-white", active && "bg-white/15 text-white")}
+                    className={cn("rounded-md px-3 py-1.5 text-sm font-bold text-white/82 transition-colors hover:bg-white/12 hover:text-white", active && "bg-white/20 text-white shadow-sm")}
                   >
                     {link.label}
                   </Link>
@@ -60,7 +58,7 @@ export default function Navbar() {
             </nav>
 
             <div className="flex items-center gap-2">
-              <LiquidGlass borderRadius={12} blur={24} refraction={10} variant="dark">
+              <LiquidGlass borderRadius={8} blur={18} refraction={10} variant="dark">
                 <Link to="/panier" className="relative flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white">
                   <ShoppingCart className="h-4 w-4" />
                   <span className="hidden sm:inline">Panier</span>

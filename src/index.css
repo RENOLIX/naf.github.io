@@ -1,20 +1,20 @@
-@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Barlow:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap");
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Barlow", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Barlow Condensed", ui-sans-serif, system-ui, sans-serif;
-  --color-background: #f8fafc;
-  --color-foreground: #15213b;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --color-background: #f6f8fb;
+  --color-foreground: #111827;
   --color-card: #ffffff;
-  --color-primary: #18284b;
+  --color-primary: #07152f;
   --color-primary-foreground: #ffffff;
-  --color-secondary: #2f66d8;
+  --color-secondary: #1f5eff;
   --color-secondary-foreground: #ffffff;
-  --color-muted: #edf2f7;
+  --color-muted: #eef2f7;
   --color-muted-foreground: #64748b;
-  --color-border: #dce4ee;
-  --color-ring: #2f66d8;
+  --color-border: #d9e1ec;
+  --color-ring: #1f5eff;
   --color-destructive: #dc2626;
 }
 
@@ -25,9 +25,9 @@
 body {
   margin: 0;
   min-width: 320px;
-  background: #f8fafc;
-  color: #15213b;
-  font-family: "Barlow", ui-sans-serif, system-ui, sans-serif;
+  background: #f6f8fb;
+  color: #111827;
+  font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
 }
 
 a {
@@ -53,6 +53,56 @@ textarea {
   text-wrap: balance;
 }
 
+.glass-pro {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.07)),
+    rgba(8, 18, 43, 0.58);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  box-shadow:
+    0 18px 50px rgba(2, 8, 23, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.34),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+}
+
+.glass-pro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(115deg, rgba(255, 255, 255, 0.24), transparent 34%),
+    radial-gradient(circle at 15% 0%, rgba(255, 255, 255, 0.22), transparent 35%);
+  opacity: 0.9;
+}
+
+.glass-pro::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 22px 22px;
+  opacity: 0.18;
+  mix-blend-mode: screen;
+}
+
+.glass-pro-light {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.76), rgba(255, 255, 255, 0.36)),
+    rgba(255, 255, 255, 0.52);
+  border: 1px solid rgba(255, 255, 255, 0.68);
+  box-shadow:
+    0 18px 48px rgba(15, 23, 42, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(148, 163, 184, 0.16);
+}
+
 .brand-sika {
   --brand: #d8282f;
   --brand-2: #f5b325;
@@ -60,9 +110,9 @@ textarea {
 }
 
 .brand-terraco {
-  --brand: #008e62;
-  --brand-2: #a8c64a;
-  --brand-ink: #102f27;
+  --brand: #0a35a5;
+  --brand-2: #2f6dff;
+  --brand-ink: #071b5c;
 }
 
 .brand-lafarge {

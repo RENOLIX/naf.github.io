@@ -82,9 +82,9 @@ function Hero() {
   return (
     <div className="px-4 py-20" style={{ background: "linear-gradient(135deg, #18284b 60%, #2f66d8)" }}>
       <div className="mx-auto max-w-7xl">
-        <p className="mb-2 text-xs font-bold uppercase tracking-widest text-white/60">Nous joindre</p>
+        <p className="mb-2 text-xs font-bold uppercase tracking-widest text-white">Nous joindre</p>
         <h1 className="font-display text-5xl font-black text-white md:text-6xl">CONTACTEZ-NOUS</h1>
-        <p className="mt-3 max-w-xl text-white/80">Notre equipe commerciale et technique est disponible pour repondre a toutes vos questions.</p>
+        <p className="mt-3 max-w-xl text-white">Notre equipe commerciale et technique est disponible pour repondre a toutes vos questions.</p>
       </div>
     </div>
   );
