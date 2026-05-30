@@ -58,13 +58,15 @@ export default function Navbar() {
             </nav>
 
             <div className="flex items-center gap-2">
-              <LiquidGlass borderRadius={8} blur={18} refraction={10} variant="dark">
-                <Link to="/panier" className="relative flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white">
-                  <ShoppingCart className="h-4 w-4" />
-                  <span className="hidden sm:inline">Panier</span>
-                  {totalItems > 0 && <span className="absolute -right-2 -top-2 grid h-5 w-5 place-items-center rounded-full bg-secondary text-xs font-bold text-white">{totalItems}</span>}
-                </Link>
-              </LiquidGlass>
+              <div className="relative">
+                <LiquidGlass borderRadius={8} blur={18} refraction={10} variant="dark">
+                  <Link to="/panier" className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white">
+                    <ShoppingCart className="h-4 w-4" />
+                    <span className="hidden sm:inline">Panier</span>
+                  </Link>
+                </LiquidGlass>
+                {totalItems > 0 && <span className="absolute -right-2 -top-2 z-20 grid h-5 min-w-5 place-items-center rounded-full bg-secondary px-1 text-xs font-bold text-white shadow-md">{totalItems}</span>}
+              </div>
               <button className="rounded-xl p-2 text-white transition-colors hover:bg-white/10 md:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label="menu">
                 {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </button>
