@@ -1,5 +1,6 @@
-import { Check, ShoppingCart } from "lucide-react";
+import { ArrowUpRight, Check, ShoppingCart } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import BrandLogo from "@/components/brand-logo.tsx";
 import { useCart } from "@/hooks/use-cart.ts";
 import { BRANDS, type Product } from "@/lib/products.ts";
@@ -23,19 +24,22 @@ export default function ProductCard({ product, compact = false }: ProductCardPro
 
   return (
     <div className={cn("group flex flex-col overflow-hidden rounded-lg border border-border bg-card transition-all duration-200 hover:-translate-y-1 hover:shadow-xl", compact && "text-sm")}>
-      <div className="relative aspect-[4/3] overflow-hidden bg-muted">
-        <img src={product.image} alt={product.name} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+      <Link to={`/produits/${product.id}`} className="relative block aspect-[4/3] overflow-hidden bg-white">
+        <img src={product.image} alt={product.name} className="h-full w-full object-contain p-5 transition-transform duration-500 group-hover:scale-105" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />
         <div className="absolute left-2 top-2 scale-[.48] origin-top-left">
           <BrandLogo brand={product.brand} />
         </div>
         {product.badge && <span className="absolute right-2 top-2 rounded px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white" style={{ backgroundColor: brand.color }}>{product.badge}</span>}
-      </div>
+      </Link>
 
       <div className="flex flex-1 flex-col gap-2 p-4">
         <div>
           <p className="text-xs uppercase tracking-wide text-muted-foreground">{product.category}</p>
-          <h3 className="mt-0.5 line-clamp-2 text-lg font-bold leading-snug text-foreground">{product.name}</h3>
+          <Link to={`/produits/${product.id}`} className="group/title mt-0.5 flex items-start gap-1 text-lg font-bold leading-snug text-foreground hover:text-secondary">
+            <span className="line-clamp-2">{product.name}</span>
+            <ArrowUpRight className="mt-1 h-3.5 w-3.5 shrink-0 opacity-0 transition-opacity group-hover/title:opacity-100" />
+          </Link>
           {!compact && <p className="mt-1 line-clamp-2 text-sm text-muted-foreground">{product.description}</p>}
         </div>
         <div className="mt-auto flex items-center justify-between gap-2 pt-3">

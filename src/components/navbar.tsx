@@ -49,7 +49,7 @@ export default function Navbar() {
                   <Link
                     key={link.href}
                     to={link.href}
-                    className={cn("rounded-md px-3 py-1.5 text-sm font-bold text-white/82 transition-colors hover:bg-white/12 hover:text-white", active && "bg-white/20 text-white shadow-sm")}
+                    className={cn("rounded-md px-3 py-1.5 text-sm font-bold text-white drop-shadow-sm transition-colors hover:bg-white/12", active && "bg-white/20 shadow-sm")}
                   >
                     {link.label}
                   </Link>
@@ -78,7 +78,7 @@ export default function Navbar() {
               <LiquidGlass borderRadius={0} blur={28} refraction={8} variant="dark" className="w-full">
                 <nav className="flex flex-col gap-1 p-4">
                   {NAV_LINKS.map((link) => (
-                    <Link key={link.href} to={link.href} onClick={() => setMenuOpen(false)} className="rounded-lg px-3 py-2.5 text-sm font-medium text-white/80 transition-all hover:bg-white/10 hover:text-white">
+                    <Link key={link.href} to={link.href} onClick={() => setMenuOpen(false)} className="rounded-lg px-3 py-2.5 text-sm font-bold text-white transition-all hover:bg-white/10">
                       {link.label}
                     </Link>
                   ))}
