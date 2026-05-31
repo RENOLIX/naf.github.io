@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
+import { useEffect, useState } from "react";
 import {
   ArrowRight,
   BadgeCheck,
   Boxes,
   Building2,
   ClipboardCheck,
+  ChevronLeft,
+  ChevronRight,
   Factory,
   FileText,
   Headphones,
@@ -20,6 +23,12 @@ import ProductCard from "@/components/product-card.tsx";
 import { BRANDS, PRODUCTS, type Brand } from "@/lib/products.ts";
 
 const FEATURED = PRODUCTS.filter((p) => p.featured).slice(0, 6);
+
+const HERO_SLIDES = [
+  { src: "/naf.github.io/hero-storefront.png", alt: "Facade du magasin NAF Factory" },
+  { src: "/naf.github.io/hero-store-interior.png", alt: "Rayons professionnels du magasin NAF Factory" },
+  { src: "/naf.github.io/hero-store-products.png", alt: "Produits de construction disponibles chez NAF Factory" },
+];
 
 const KPIS = [
   { value: "15+", label: "annees terrain" },
@@ -41,15 +50,27 @@ const TRUST = [
 ];
 
 export default function Index() {
+  const [heroSlide, setHeroSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => setHeroSlide((current) => (current + 1) % HERO_SLIDES.length), 6500);
+    return () => window.clearInterval(timer);
+  }, []);
+
   return (
     <div className="bg-background">
       <section className="relative min-h-[88vh] overflow-hidden bg-primary text-white">
-        <img
-          src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=2200&q=85"
-          alt="Chantier professionnel"
-          className="absolute inset-0 h-full w-full object-cover opacity-36"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,21,47,.98)_0%,rgba(7,21,47,.9)_42%,rgba(7,21,47,.52)_72%,rgba(7,21,47,.24)_100%)]" />
+        {HERO_SLIDES.map((slide, index) => (
+          <img
+            key={slide.src}
+            src={slide.src}
+            alt={slide.alt}
+            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
+              heroSlide === index ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        ))}
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,21,47,.98)_0%,rgba(7,21,47,.94)_34%,rgba(7,21,47,.68)_66%,rgba(7,21,47,.42)_100%)]" />
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
 
         <div className="relative flex min-h-[88vh] items-center px-4 py-20 md:px-8 lg:px-14">
@@ -85,6 +106,36 @@ export default function Index() {
               </LiquidGlass>
             </div>
           </motion.div>
+        </div>
+
+        <div className="absolute bottom-10 right-4 z-20 flex items-center gap-3 md:right-8 lg:right-14">
+          <button
+            type="button"
+            aria-label="Image precedente"
+            onClick={() => setHeroSlide((current) => (current - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)}
+            className="grid h-11 w-11 place-items-center rounded-md border border-white/30 bg-slate-950/45 text-white backdrop-blur-md transition hover:bg-white hover:text-primary"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+          <div className="flex gap-2 px-1">
+            {HERO_SLIDES.map((slide, index) => (
+              <button
+                type="button"
+                key={slide.src}
+                aria-label={`Afficher l'image ${index + 1}`}
+                onClick={() => setHeroSlide(index)}
+                className={`h-2.5 rounded-full transition-all ${heroSlide === index ? "w-8 bg-white" : "w-2.5 bg-white/55 hover:bg-white"}`}
+              />
+            ))}
+          </div>
+          <button
+            type="button"
+            aria-label="Image suivante"
+            onClick={() => setHeroSlide((current) => (current + 1) % HERO_SLIDES.length)}
+            className="grid h-11 w-11 place-items-center rounded-md border border-white/30 bg-slate-950/45 text-white backdrop-blur-md transition hover:bg-white hover:text-primary"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
         </div>
       </section>
 
