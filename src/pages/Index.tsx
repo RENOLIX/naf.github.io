@@ -108,23 +108,23 @@ export default function Index() {
           </motion.div>
         </div>
 
-        <div className="absolute bottom-10 right-4 z-20 flex items-center gap-3 md:right-8 lg:right-14">
+        <div className="absolute right-4 top-5 z-20 flex items-center gap-1.5 rounded-md border border-white/18 bg-slate-950/30 p-1.5 shadow-lg backdrop-blur-xl md:right-8 lg:right-14">
           <button
             type="button"
             aria-label="Image precedente"
             onClick={() => setHeroSlide((current) => (current - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)}
-            className="grid h-11 w-11 place-items-center rounded-md border border-white/30 bg-slate-950/45 text-white backdrop-blur-md transition hover:bg-white hover:text-primary"
+            className="grid h-8 w-8 place-items-center rounded text-white/80 transition hover:bg-white/15 hover:text-white"
           >
-            <ChevronLeft className="h-5 w-5" />
+            <ChevronLeft className="h-4 w-4" />
           </button>
-          <div className="flex gap-2 px-1">
+          <div className="flex gap-1.5 px-1">
             {HERO_SLIDES.map((slide, index) => (
               <button
                 type="button"
                 key={slide.src}
                 aria-label={`Afficher l'image ${index + 1}`}
                 onClick={() => setHeroSlide(index)}
-                className={`h-2.5 rounded-full transition-all ${heroSlide === index ? "w-8 bg-white" : "w-2.5 bg-white/55 hover:bg-white"}`}
+                className={`h-1.5 rounded-full transition-all ${heroSlide === index ? "w-5 bg-white" : "w-1.5 bg-white/45 hover:bg-white/80"}`}
               />
             ))}
           </div>
@@ -132,9 +132,9 @@ export default function Index() {
             type="button"
             aria-label="Image suivante"
             onClick={() => setHeroSlide((current) => (current + 1) % HERO_SLIDES.length)}
-            className="grid h-11 w-11 place-items-center rounded-md border border-white/30 bg-slate-950/45 text-white backdrop-blur-md transition hover:bg-white hover:text-primary"
+            className="grid h-8 w-8 place-items-center rounded text-white/80 transition hover:bg-white/15 hover:text-white"
           >
-            <ChevronRight className="h-5 w-5" />
+            <ChevronRight className="h-4 w-4" />
           </button>
         </div>
       </section>

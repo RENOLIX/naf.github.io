@@ -11,9 +11,22 @@ export default function Contact() {
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Message envoye ! Nous vous repondrons sous 24h.");
+    const message = [
+      "Bonjour NAF Factory,",
+      "",
+      "Je souhaite vous contacter depuis votre site.",
+      "",
+      `Nom : ${form.nom}`,
+      `Email : ${form.email}`,
+      `Telephone : ${form.telephone || "Non renseigne"}`,
+      `Sujet : ${form.sujet}`,
+      "",
+      "MESSAGE",
+      form.message,
+    ].join("\n");
+    window.open(`https://wa.me/213665129895?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+    toast.success("Votre message est pret dans WhatsApp.");
     setSent(true);
-    setForm(INIT);
   };
 
   return (
@@ -28,8 +41,8 @@ export default function Contact() {
             </div>
             {[
               { icon: MapPin, label: "Adresse", value: "Zone Industrielle, Alger, Algerie" },
-              { icon: Phone, label: "Telephone", value: "+213 (0) 555 000 000" },
-              { icon: Mail, label: "Email", value: "contact@naf-factory.dz" },
+              { icon: Phone, label: "Telephone", value: "0665 12 98 95" },
+              { icon: Mail, label: "Email", value: "contact@naf-factory.com" },
               { icon: Clock, label: "Horaires", value: "Dim-Jeu : 8h00 - 17h00" },
             ].map((info) => (
               <div key={info.label} className="flex items-start gap-3">
@@ -39,7 +52,7 @@ export default function Contact() {
             ))}
             <div className="border-t border-border pt-4">
               <p className="mb-3 text-xs font-bold uppercase tracking-wide text-muted-foreground">Support technique par marque</p>
-              {[["Sika", "#D8282F", "sika@naf-factory.dz"], ["Terraco", "#008E62", "terraco@naf-factory.dz"], ["Lafarge", "#00925A", "lafarge@naf-factory.dz"]].map(([name, color, email]) => (
+              {[["Sika", "#D8282F", "contact@naf-factory.com"], ["Terraco", "#008E62", "contact@naf-factory.com"], ["Lafarge", "#00925A", "contact@naf-factory.com"]].map(([name, color, email]) => (
                 <div key={name} className="mb-2 flex items-center gap-2"><span className="h-2 w-2 rounded-full" style={{ backgroundColor: color }} /><span className="text-sm text-muted-foreground">{name}: {email}</span></div>
               ))}
             </div>
@@ -59,7 +72,7 @@ export default function Contact() {
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <Field label="Nom complet *"><input name="nom" required value={form.nom} onChange={onChange} placeholder="Ahmed Benali" className="input" /></Field>
                   <Field label="Email *"><input type="email" name="email" required value={form.email} onChange={onChange} placeholder="example@gmail.com" className="input" /></Field>
-                  <Field label="Telephone"><input type="tel" name="telephone" value={form.telephone} onChange={onChange} placeholder="+213 555 000 000" className="input" /></Field>
+                  <Field label="Telephone"><input type="tel" name="telephone" value={form.telephone} onChange={onChange} placeholder="0665 12 98 95" className="input" /></Field>
                   <Field label="Sujet *"><select name="sujet" required value={form.sujet} onChange={onChange} className="input"><option value="">Selectionner...</option><option value="devis">Demande de devis</option><option value="commande">Suivi de commande</option><option value="technique">Support technique</option><option value="partenariat">Partenariat commercial</option><option value="autre">Autre</option></select></Field>
                 </div>
                 <Field label="Message *"><textarea name="message" required value={form.message} onChange={onChange} rows={5} placeholder="Decrivez votre besoin ou votre projet..." className="input resize-none" /></Field>

@@ -39,8 +39,8 @@ export default function Footer() {
           <h4 className="mb-4 text-sm font-bold uppercase tracking-widest text-white/50">Contact</h4>
           <ul className="space-y-3 text-sm text-white/70">
             <li className="flex items-start gap-2"><MapPin className="mt-0.5 h-4 w-4 shrink-0" /> Zone Industrielle, Alger, Algerie</li>
-            <li className="flex items-center gap-2"><Phone className="h-4 w-4 shrink-0" /> +213 (0) 555 000 000</li>
-            <li className="flex items-center gap-2"><Mail className="h-4 w-4 shrink-0" /> contact@naf-factory.dz</li>
+            <li className="flex items-center gap-2"><Phone className="h-4 w-4 shrink-0" /> 0665 12 98 95</li>
+            <li className="flex items-center gap-2"><Mail className="h-4 w-4 shrink-0" /> contact@naf-factory.com</li>
           </ul>
         </div>
       </div>

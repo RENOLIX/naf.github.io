@@ -20,12 +20,33 @@ type OrderForm = z.infer<typeof orderSchema>;
 
 export default function Panier() {
   const { items, removeItem, updateQuantity, clearCart, totalItems } = useCart();
-  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<OrderForm>({ resolver: zodResolver(orderSchema) });
+  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<OrderForm>({ resolver: zodResolver(orderSchema) });
 
-  const onSubmit = () => {
-    toast.success("Demande envoyee ! Notre equipe vous contactera sous 24h.");
-    clearCart();
-    reset();
+  const onSubmit = (data: OrderForm) => {
+    const productLines = items.map((item, index) => `${index + 1}. ${item.product.name}\n   Marque: ${item.product.brand.toUpperCase()}\n   Format: ${item.product.unit}\n   Quantite: ${item.quantity}`).join("\n\n");
+    const message = [
+      "Bonjour NAF Factory,",
+      "",
+      "Je souhaite recevoir un devis pour la commande suivante :",
+      "",
+      productLines,
+      "",
+      `Total d'articles : ${totalItems()}`,
+      "",
+      "COORDONNEES CLIENT",
+      `Nom : ${data.nom}`,
+      `Prenom : ${data.prenom}`,
+      `Telephone principal : ${data.telephone1}`,
+      `Telephone secondaire : ${data.telephone2 || "Non renseigne"}`,
+      `Societe : ${data.societe || "Non renseignee"}`,
+      `Adresse : ${data.adresse}`,
+      `Message : ${data.message || "Aucune precision complementaire"}`,
+      "",
+      "Merci de me confirmer la disponibilite et le devis.",
+    ].join("\n");
+
+    window.open(`https://wa.me/213665129895?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+    toast.success("Votre demande est prete dans WhatsApp.");
   };
 
   if (items.length === 0) {

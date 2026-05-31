@@ -26,8 +26,8 @@ export default function Navbar() {
     <>
       <div className="hidden items-center justify-between bg-primary px-4 py-2 text-sm text-white md:flex">
         <div className="flex items-center gap-6">
-          <span className="flex items-center gap-1.5"><Phone className="h-3.5 w-3.5" /> +213 (0) 555 000 000</span>
-          <span className="flex items-center gap-1.5"><Mail className="h-3.5 w-3.5" /> contact@naf-factory.dz</span>
+          <span className="flex items-center gap-1.5"><Phone className="h-3.5 w-3.5" /> 0665 12 98 95</span>
+          <span className="flex items-center gap-1.5"><Mail className="h-3.5 w-3.5" /> contact@naf-factory.com</span>
         </div>
         <span className="font-medium tracking-wide">Distributeur Officiel SIKA - TERRACO - LAFARGE</span>
       </div>
