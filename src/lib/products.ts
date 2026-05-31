@@ -2,7 +2,14 @@ import type { ComponentType } from "react";
 import { Boxes, Droplets, Layers, Paintbrush, Shield, Sparkles, Wrench } from "lucide-react";
 
 export type Brand = "sika" | "terraco" | "lafarge";
-export type ProductCategory = "Tile Adhesive" | "Retail" | "Specialists";
+export type ProductCategory =
+  | "Tile Adhesive"
+  | "Retail"
+  | "Specialists"
+  | "Etancheite"
+  | "Enduits & Finition"
+  | "Primaires & Accrochage"
+  | "Protection";
 
 export type Product = {
   id: string;
@@ -71,11 +78,52 @@ export const BRANDS: Record<Brand, BrandProfile> = {
   },
 };
 
-const spec = (conditionnement: string, usage: string) => [
+const spec = (conditionnement: string, usage: string, marque = "Sika") => [
   { label: "Conditionnement", value: conditionnement },
   { label: "Usage principal", value: usage },
-  { label: "Marque", value: "Sika" },
+  { label: "Marque", value: marque },
 ];
+
+const terracoProduct = ({
+  id,
+  name,
+  category,
+  description,
+  unit,
+  image,
+  sourceUrl,
+  technicalSheet = sourceUrl,
+  usage,
+  colors,
+  badge,
+}: {
+  id: string;
+  name: string;
+  category: Extract<ProductCategory, "Etancheite" | "Enduits & Finition" | "Primaires & Accrochage" | "Protection">;
+  description: string;
+  unit: string;
+  image: string;
+  sourceUrl: string;
+  technicalSheet?: string;
+  usage: string;
+  colors?: string[];
+  badge?: string;
+}): Product => ({
+  id,
+  brand: "terraco",
+  name,
+  category,
+  description,
+  unit,
+  formats: [unit],
+  colors,
+  image: `/naf.github.io/products/terraco/${image}`,
+  technicalSheet,
+  sourceUrl,
+  highlights: ["Produit Terraco original", usage, "Disponible chez NAF Factory"],
+  specifications: spec(unit, usage, "Terraco"),
+  badge,
+});
 
 export const PRODUCTS: Product[] = [
   {
@@ -401,10 +449,270 @@ export const PRODUCTS: Product[] = [
     highlights: ["Protection des armatures", "Primaire d'adherence", "Reparation du beton"],
     specifications: spec("Bidon de 1 kg", "Passivation et primaire d'adherence"),
   },
+  terracoProduct({
+    id: "terraco-ez-skim",
+    name: "Enduit Terraco EZ-Skim",
+    category: "Enduits & Finition",
+    description: "Enduit de lissage Terraco pour obtenir une surface interieure reguliere avant la finition.",
+    unit: "Conditionnement sur devis",
+    image: "handycoat-ez-skim.png",
+    sourceUrl: "https://www.terraco.com/dz-fr/products/handycoat-ez-skim/",
+    technicalSheet: "https://www.terraco.com/dz-fr/wp-content/uploads/2022/12/63123-Handycoat-EZ-Skim.pdf",
+    usage: "Lissage des murs interieurs",
+  }),
+  terracoProduct({
+    id: "flexicoat-blanc-20kg",
+    name: "Flexicoat Blanc 20 kg",
+    category: "Etancheite",
+    description: "Revetement flexible Terraco blanc destine a la protection et a l'impermeabilisation des surfaces.",
+    unit: "Seau 20 kg",
+    image: "flexicoat.png",
+    sourceUrl: "https://www.terraco.com/dz-fr/products/flexicoat/",
+    usage: "Revetement flexible d'etancheite",
+    colors: ["Blanc"],
+  }),
+  terracoProduct({
+    id: "flexicoat-blanc-5kg",
+    name: "Flexicoat Blanc 5 kg",
+    category: "Etancheite",
+    description: "Revetement flexible Terraco blanc destine a la protection et a l'impermeabilisation des surfaces.",
+    unit: "Seau 5 kg",
+    image: "flexicoat.png",
+    sourceUrl: "https://www.terraco.com/dz-fr/products/flexicoat/",
+    usage: "Revetement flexible d'etancheite",
+    colors: ["Blanc"],
+  }),
+  terracoProduct({
+    id: "flexicoat-gris-20kg",
+    name: "Flexicoat Gris 20 kg",
+    category: "Etancheite",
+    description: "Revetement flexible Terraco gris destine a la protection et a l'impermeabilisation des surfaces.",
+    unit: "Seau 20 kg",
+    image: "flexicoat.png",
+    sourceUrl: "https://www.terraco.com/dz-fr/products/flexicoat/",
+    usage: "Revetement flexible d'etancheite",
+    colors: ["Gris"],
+  }),
+  terracoProduct({
+    id: "flexicoat-gris-5kg",
+    name: "Flexicoat Gris 5 kg",
+    category: "Etancheite",
+    description: "Revetement flexible Terraco gris destine a la protection et a l'impermeabilisation des surfaces.",
+    unit: "Seau 5 kg",
+    image: "flexicoat.png",
+    sourceUrl: "https://www.terraco.com/dz-fr/products/flexicoat/",
+    usage: "Revetement flexible d'etancheite",
+    colors: ["Gris"],
+  }),
+  terracoProduct({
+    id: "flexicoat-rouge-20kg",
+    name: "Flexicoat Rouge 20 kg",
+    category: "Etancheite",
+    description: "Revetement flexible Terraco rouge destine a la protection et a l'impermeabilisation des surfaces.",
+    unit: "Seau 20 kg",
+    image: "flexicoat.png",
+    sourceUrl: "https://www.terraco.com/dz-fr/products/flexicoat/",
+    usage: "Revetement flexible d'etancheite",
+    colors: ["Rouge"],
+  }),
+  terracoProduct({
+    id: "flexicoat-rouge-5kg",
+    name: "Flexicoat Rouge 5 kg",
+    category: "Etancheite",
+    description: "Revetement flexible Terraco rouge destine a la protection et a l'impermeabilisation des surfaces.",
+    unit: "Seau 5 kg",
+    image: "flexicoat.png",
+    sourceUrl: "https://www.terraco.com/dz-fr/products/flexicoat/",
+    usage: "Revetement flexible d'etancheite",
+    colors: ["Rouge"],
+  }),
+  terracoProduct({
+    id: "handyprime-5kg",
+    name: "Handyprime 5 kg",
+    category: "Primaires & Accrochage",
+    description: "Primaire Terraco pour egaliser la porosite des murs et preparer la surface avant finition.",
+    unit: "Seau 5 kg",
+    image: "handyprime.png",
+    sourceUrl: "https://www.terraco.com/dz-fr/products/handyprime/",
+    technicalSheet: "https://www.terraco.com/dz-fr/wp-content/uploads/2023/01/HANDYPRIME.pdf",
+    usage: "Preparation des supports muraux",
+  }),
+  terracoProduct({
+    id: "handycoat-anti-humidite-25kg",
+    name: "Handycoat Anti-Humidite 25 kg",
+    category: "Enduits & Finition",
+    description: "Enduit Terraco hydrofuge pour le traitement et la finition des supports exposes a l'humidite.",
+    unit: "Seau 25 kg",
+    image: "handycoat-hydrofuge.png",
+    sourceUrl: "https://www.terraco.com/dz-fr/products/handycoat-hydrofuge/",
+    usage: "Enduit hydrofuge pour supports humides",
+  }),
+  terracoProduct({
+    id: "handycoat-exterieur-25kg",
+    name: "Handycoat Exterieur 25 kg",
+    category: "Enduits & Finition",
+    description: "Enduit de finition Terraco pret a l'emploi pour les murs et surfaces exterieurs.",
+    unit: "Seau 25 kg",
+    image: "handycoat-exterieur.png",
+    sourceUrl: "https://www.terraco.com/dz-fr/products/handycoat-exterieur/",
+    usage: "Finition des murs exterieurs",
+  }),
+  terracoProduct({
+    id: "handycoat-anti-humidite-5kg",
+    name: "Handycoat Anti-Humidite 5 kg",
+    category: "Enduits & Finition",
+    description: "Enduit Terraco hydrofuge pour le traitement et la finition des supports exposes a l'humidite.",
+    unit: "Seau 5 kg",
+    image: "handycoat-hydrofuge.png",
+    sourceUrl: "https://www.terraco.com/dz-fr/products/handycoat-hydrofuge/",
+    usage: "Enduit hydrofuge pour supports humides",
+  }),
+  terracoProduct({
+    id: "handycoat-enduit-ez-joint",
+    name: "Handycoat Enduit EZ-Joint",
+    category: "Enduits & Finition",
+    description: "Enduit Terraco pret a l'emploi pour les joints interieurs et les finitions de plaques.",
+    unit: "Conditionnement sur devis",
+    image: "handycoat-ez-joint.png",
+    sourceUrl: "https://www.terraco.com/products/handycoat-ez-joint/",
+    technicalSheet: "https://www.terraco.com/dz-fr/wp-content/uploads/2022/12/Handycoat-EZ-joint_compressed-1-1.pdf",
+    usage: "Traitement des joints interieurs",
+  }),
+  terracoProduct({
+    id: "handycoat-enduit-ez-joint-5kg",
+    name: "Handycoat Enduit EZ-Joint 5 kg",
+    category: "Enduits & Finition",
+    description: "Enduit Terraco pret a l'emploi pour les joints interieurs et les finitions de plaques.",
+    unit: "Seau 5 kg",
+    image: "handycoat-ez-joint.png",
+    sourceUrl: "https://www.terraco.com/products/handycoat-ez-joint/",
+    technicalSheet: "https://www.terraco.com/dz-fr/wp-content/uploads/2022/12/Handycoat-EZ-joint_compressed-1-1.pdf",
+    usage: "Traitement des joints interieurs",
+  }),
+  terracoProduct({
+    id: "handycoat-enduit-rebouchage",
+    name: "Handycoat Enduit de Rebouchage",
+    category: "Enduits & Finition",
+    description: "Enduit Terraco pour combler les irregularites et preparer les surfaces avant finition.",
+    unit: "Conditionnement sur devis",
+    image: "handycoat-rebouchage.png",
+    sourceUrl: "https://www.terraco.com/dz-fr/products/handycoat-rebouchage/",
+    usage: "Rebouchage et preparation des murs",
+  }),
+  terracoProduct({
+    id: "handycoat-ez-skim",
+    name: "Handycoat EZ-Skim",
+    category: "Enduits & Finition",
+    description: "Enduit Terraco pret a l'emploi pour le lissage rapide des surfaces interieures.",
+    unit: "Conditionnement sur devis",
+    image: "handycoat-ez-skim.png",
+    sourceUrl: "https://www.terraco.com/dz-fr/products/handycoat-ez-skim/",
+    technicalSheet: "https://www.terraco.com/dz-fr/wp-content/uploads/2022/12/63123-Handycoat-EZ-Skim.pdf",
+    usage: "Lissage rapide des murs interieurs",
+  }),
+  terracoProduct({
+    id: "handycoat-finition",
+    name: "Handycoat Finition",
+    category: "Enduits & Finition",
+    description: "Enduit Terraco de finition lisse pour preparer les supports interieurs avant decoration.",
+    unit: "Conditionnement sur devis",
+    image: "handycoat-finition.png",
+    sourceUrl: "https://www.terraco.com/dz-fr/products/handycoat-finition/",
+    usage: "Finition lisse des murs interieurs",
+  }),
+  terracoProduct({
+    id: "handycoat-interieur-5kg",
+    name: "Handycoat Interieur 5 kg",
+    category: "Enduits & Finition",
+    description: "Enduit Terraco pret a l'emploi pour la preparation et la finition des surfaces interieures.",
+    unit: "Seau 5 kg",
+    image: "handycoat-interieur.png",
+    sourceUrl: "https://www.terraco.com/dz-fr/products/handycoat-interieur/",
+    usage: "Preparation des murs interieurs",
+  }),
+  terracoProduct({
+    id: "handycoat-interieur-25kg",
+    name: "Handycoat Interieur 25 kg",
+    category: "Enduits & Finition",
+    description: "Enduit Terraco pret a l'emploi pour la preparation et la finition des surfaces interieures.",
+    unit: "Seau 25 kg",
+    image: "handycoat-interieur.png",
+    sourceUrl: "https://www.terraco.com/dz-fr/products/handycoat-interieur/",
+    usage: "Preparation des murs interieurs",
+  }),
+  terracoProduct({
+    id: "handyprime-20kg",
+    name: "Handyprime 20 kg",
+    category: "Primaires & Accrochage",
+    description: "Primaire Terraco pour egaliser la porosite des murs et preparer la surface avant finition.",
+    unit: "Seau 20 kg",
+    image: "handyprime.png",
+    sourceUrl: "https://www.terraco.com/dz-fr/products/handyprime/",
+    technicalSheet: "https://www.terraco.com/dz-fr/wp-content/uploads/2023/01/HANDYPRIME.pdf",
+    usage: "Preparation des supports muraux",
+  }),
+  terracoProduct({
+    id: "terrabond-cp-20kg",
+    name: "Terrabond CP 20 kg",
+    category: "Primaires & Accrochage",
+    description: "Primaire d'adherence Terraco pour ameliorer l'accrochage sur les supports avant application.",
+    unit: "Seau 20 kg",
+    image: "terrabond-cp.png",
+    sourceUrl: "https://www.terraco.com/dz-fr/products/terrabond-cp/",
+    technicalSheet: "https://www.terraco.com/dz-fr/wp-content/uploads/2023/01/68126-Terrabond-CP.pdf",
+    usage: "Primaire d'adherence",
+  }),
+  terracoProduct({
+    id: "terrabond-cp-5kg",
+    name: "Terrabond CP 5 kg",
+    category: "Primaires & Accrochage",
+    description: "Primaire d'adherence Terraco pour ameliorer l'accrochage sur les supports avant application.",
+    unit: "Seau 5 kg",
+    image: "terrabond-cp.png",
+    sourceUrl: "https://www.terraco.com/dz-fr/products/terrabond-cp/",
+    technicalSheet: "https://www.terraco.com/dz-fr/wp-content/uploads/2023/01/68126-Terrabond-CP.pdf",
+    usage: "Primaire d'adherence",
+  }),
+  terracoProduct({
+    id: "terracrete-20kg",
+    name: "Terracrete 20 kg",
+    category: "Etancheite",
+    description: "Systeme Terraco d'impermeabilisation bi-composant pour les supports cimentaires.",
+    unit: "Kit 20 kg",
+    image: "terracrete.png",
+    sourceUrl: "https://www.terraco.com/dz-fr/products/terracrete/",
+    technicalSheet: "https://www.terraco.com/dz-fr/wp-content/uploads/2023/01/Terracrete.pdf",
+    usage: "Impermeabilisation bi-composant",
+  }),
+  terracoProduct({
+    id: "terraseal-h100",
+    name: "Terraseal H100",
+    category: "Etancheite",
+    description: "Systeme Terraco d'impermeabilisation pour la protection des supports exposes a l'eau.",
+    unit: "Kit 20 kg",
+    image: "terraseal-h100.png",
+    sourceUrl: "https://www.terraco.com/dz-fr/products/terraseal-h-100/",
+    technicalSheet: "https://www.terraco.com/dz-fr/wp-content/uploads/2023/01/Terraseal-H100.pdf",
+    usage: "Impermeabilisation des supports",
+  }),
+  terracoProduct({
+    id: "weathercoat-gp",
+    name: "Weathercoat GP",
+    category: "Etancheite",
+    description: "Revetement Terraco impermeabilisant pour facades, formule pour resister aux conditions exterieures.",
+    unit: "Seau 20 kg",
+    image: "weathercoat-gp.png",
+    sourceUrl: "https://www.terraco.com/dz-fr/products/weathercoat-gp/",
+    usage: "Protection impermeabilisante des facades",
+  }),
 ];
 
 export const CATEGORY_ICONS: Record<ProductCategory, ComponentType<{ className?: string }>> = {
   "Tile Adhesive": Sparkles,
   Retail: Boxes,
   Specialists: Wrench,
+  Etancheite: Droplets,
+  "Enduits & Finition": Paintbrush,
+  "Primaires & Accrochage": Layers,
+  Protection: Shield,
 };

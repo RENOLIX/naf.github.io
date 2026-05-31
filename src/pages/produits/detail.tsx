@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import BrandLogo from "@/components/brand-logo.tsx";
 import ProductCard from "@/components/product-card.tsx";
 import { useCart } from "@/hooks/use-cart.ts";
-import { PRODUCTS } from "@/lib/products.ts";
+import { BRANDS, PRODUCTS } from "@/lib/products.ts";
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -25,13 +25,14 @@ export default function ProductDetail() {
 
   const related = PRODUCTS.filter((item) => item.category === product.category && item.id !== product.id).slice(0, 3);
   const sheetIsPdf = product.technicalSheet.toLowerCase().includes(".pdf");
+  const brand = BRANDS[product.brand];
 
   return (
     <div className="min-h-screen bg-background">
       <section className="bg-primary px-4 py-10 text-white">
         <div className="mx-auto max-w-7xl">
-          <Link to="/produits?marque=sika" className="inline-flex items-center gap-2 text-sm font-bold text-white">
-            <ArrowLeft className="h-4 w-4" /> Retour aux produits Sika
+          <Link to={`/produits?marque=${product.brand}`} className="inline-flex items-center gap-2 text-sm font-bold text-white">
+            <ArrowLeft className="h-4 w-4" /> Retour aux produits {brand.name}
           </Link>
           <div className="mt-7 flex flex-wrap items-end justify-between gap-5">
             <div>
@@ -39,7 +40,7 @@ export default function ProductDetail() {
               <h1 className="mt-2 text-4xl font-black text-white sm:text-5xl">{product.name}</h1>
             </div>
             <div className="scale-75 origin-bottom-right rounded-md bg-white p-3">
-              <BrandLogo brand="sika" />
+              <BrandLogo brand={product.brand} />
             </div>
           </div>
         </div>
@@ -114,7 +115,7 @@ export default function ProductDetail() {
         </div>
 
         <a href={product.sourceUrl} target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-secondary hover:underline">
-          <ExternalLink className="h-4 w-4" /> Consulter la page officielle Sika Algerie
+          <ExternalLink className="h-4 w-4" /> Consulter la page officielle {brand.name}
         </a>
 
         {related.length > 0 && (
