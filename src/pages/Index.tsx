@@ -22,7 +22,7 @@ import LiquidGlass from "@/components/liquid-glass.tsx";
 import ProductCard from "@/components/product-card.tsx";
 import { BRANDS, PRODUCTS, type Brand } from "@/lib/products.ts";
 
-const FEATURED = PRODUCTS.filter((p) => p.featured).slice(0, 6);
+const BEST_SELLERS = PRODUCTS.filter((p) => p.bestSeller).slice(0, 4);
 
 const HERO_SLIDES = [
   { src: "/naf.github.io/hero-storefront.png", alt: "Facade du magasin NAF Factory" },
@@ -219,17 +219,17 @@ export default function Index() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-10 flex flex-col justify-between gap-5 md:flex-row md:items-end">
             <div>
-              <SectionLabel>Selection chantier</SectionLabel>
+              <SectionLabel>Plus vendus</SectionLabel>
               <h2 className="mt-3 font-display text-3xl font-extrabold text-foreground md:text-5xl">
-                Produits demandes le plus souvent.
+                Les adjuvants Sika les plus demandes.
               </h2>
             </div>
-            <Link to="/produits" className="inline-flex items-center gap-2 text-sm font-extrabold text-secondary">
-              Voir tous les produits <ArrowRight className="h-4 w-4" />
+            <Link to="/produits?marque=sika" className="inline-flex items-center gap-2 text-sm font-extrabold text-secondary">
+              Voir les produits Sika <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {FEATURED.map((product) => (
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {BEST_SELLERS.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>

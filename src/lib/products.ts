@@ -12,6 +12,7 @@ export type ProductCategory =
   | "Protection"
   | "Isolation"
   | "Mortiers & Enduits"
+  | "Adjuvants Beton"
   | "Adhesifs epoxy"
   | "Primaires & Fixateurs"
   | "Mastics & Collage"
@@ -34,6 +35,7 @@ export type Product = {
   specifications: { label: string; value: string }[];
   badge?: string;
   featured?: boolean;
+  bestSeller?: boolean;
 };
 
 export type BrandProfile = {
@@ -363,19 +365,89 @@ export const PRODUCTS: Product[] = [
     featured: true,
   },
   {
+    id: "sika-viscocrete-775-flow",
+    brand: "sika",
+    name: "Sika ViscoCrete-775 Flow",
+    category: "Adjuvants Beton",
+    description: "Super plastifiant haut reducteur d'eau a base de polycarboxylates pour beton pret a l'emploi avec longs maintiens d'ouvrabilite.",
+    unit: "Fut 200 kg / CP 1100 kg",
+    formats: ["Fut 200 kg", "CP 1100 kg"],
+    image: "/naf.github.io/products/sika-viscocrete.png",
+    technicalSheet: "https://dza.sika.com/dam/dms/dz01/o/sika-viscocrete-775flow.pdf",
+    sourceUrl: "https://dza.sika.com/fr/construction/adjuvants-pour-beton/beton-pret-a-l-emploi/superplastifiants/sika-viscocrete-775flow.html",
+    highlights: ["Haut reducteur d'eau", "Long a tres long maintien d'ouvrabilite", "Betons fluides a faible viscosite"],
+    specifications: [
+      { label: "Conditionnement", value: "Fut de 200 kg, CP de 1100 kg" },
+      { label: "Usage principal", value: "Superplastifiant pour beton pret a l'emploi" },
+      { label: "Couleur", value: "Liquide marron fonce" },
+      { label: "Marque", value: "Sika" },
+    ],
+    badge: "Plus vendu",
+    bestSeller: true,
+  },
+  {
+    id: "sika-viscocrete-tempo-12",
+    brand: "sika",
+    name: "Sika ViscoCrete TEMPO-12",
+    category: "Adjuvants Beton",
+    description: "Superplastifiant haut reducteur d'eau polyvalent de nouvelle generation, non chlore, a base de copolymere acrylique.",
+    unit: "Fut 230 kg / Cubi 1100 kg / Vrac",
+    formats: ["Fut 230 kg", "Cubi 1100 kg", "Vrac"],
+    image: "/naf.github.io/products/sika-viscocrete.png",
+    technicalSheet: "https://dza.sika.com/dam/dms/dz01/j/sika-viscocrete-tempo-12.pdf",
+    sourceUrl: "https://dza.sika.com/fr/construction/adjuvants-pour-beton/beton-pret-a-l-emploi/reducteurs-d-eau/hauts-reducteursdeau/sika-viscocrete-tempo-12.html",
+    highlights: ["Nouvelle generation", "Non chlore", "Maintien d'ouvrabilite du beton"],
+    specifications: [
+      { label: "Conditionnement", value: "Fut de 230 kg, Cubi de 1100 kg, Vrac" },
+      { label: "Usage principal", value: "Superplastifiant / haut reducteur d'eau" },
+      { label: "Couleur", value: "Liquide brun clair a fonce" },
+      { label: "Marque", value: "Sika" },
+    ],
+    badge: "Plus vendu",
+    bestSeller: true,
+  },
+  {
     id: "hydrofuge-sika-liquide",
     brand: "sika",
     name: "Hydrofuge Sika Liquide",
     category: "Retail",
     description: "Adjuvant liquide d'impermeabilisation pour mortiers et betons, destine a limiter la penetration d'eau.",
-    unit: "Bidon 2 / 5 / 10 kg",
-    formats: ["2 kg", "5 kg", "10 kg"],
+    unit: "Bidon 2 / 5 / 10 L",
+    formats: ["2 L", "5 L", "10 L", "Fut 210 kg", "Cubi 1000 kg"],
     image: "/naf.github.io/products/hydrofuge-sika-liquide.jpg",
     technicalSheet: "https://dza.sika.com/dam/dms/dz01/0/hydrofuge-sika-liquide.pdf",
     sourceUrl: "https://dza.sika.com/fr/construction/systemes-d-etancheite/adjuvants-d-impermeabilisationpourbeton/hydrofuge-sika-liquide.html",
-    highlights: ["Hydrofugation des mortiers", "Reduction de la penetration d'eau", "Trois formats disponibles"],
-    specifications: spec("Bidons de 2 kg, 5 kg et 10 kg", "Impermeabilisation de mortiers et betons"),
+    highlights: ["Hydrofugation des mortiers et betons", "Reduction de la penetration d'eau", "Formats bidon, fut et cubi"],
+    specifications: [
+      { label: "Conditionnement", value: "Bidons de 2 L, 5 L, 10 L, fut de 210 kg, cubi de 1000 kg" },
+      { label: "Usage principal", value: "Impermeabilisation de mortiers et betons" },
+      { label: "Couleur", value: "Liquide blanc laiteux" },
+      { label: "Marque", value: "Sika" },
+    ],
     featured: true,
+    badge: "Plus vendu",
+    bestSeller: true,
+  },
+  {
+    id: "sikaplast-380-rmx",
+    brand: "sika",
+    name: "SikaPlast-380 RMX",
+    category: "Adjuvants Beton",
+    description: "Superplastifiant haut reducteur d'eau polyvalent de nouvelle generation a base de polycarboxylates.",
+    unit: "Cubi 1100 kg",
+    formats: ["1100 kg"],
+    image: "/naf.github.io/products/sikaplast-380-rmx.webp",
+    technicalSheet: "https://dza.sika.com/dam/dms/dz01/p/sikaplast-380-rmx.pdf",
+    sourceUrl: "https://dza.sika.com/fr/construction/adjuvants-pour-beton/beton-pret-a-l-emploi/superplastifiants/sikaplast-380-rmx.html",
+    highlights: ["Haut reducteur d'eau", "Base polycarboxylates", "Ameliore la maniabilite du beton"],
+    specifications: [
+      { label: "Conditionnement", value: "1100 kg" },
+      { label: "Usage principal", value: "Superplastifiant pour beton pret a l'emploi" },
+      { label: "Couleur", value: "Liquide brun clair a fonce" },
+      { label: "Marque", value: "Sika" },
+    ],
+    badge: "Plus vendu",
+    bestSeller: true,
   },
   {
     id: "sikalatex-pro",
@@ -1215,6 +1287,7 @@ export const CATEGORY_ICONS: Record<ProductCategory, ComponentType<{ className?:
   Protection: Shield,
   Isolation: Sparkles,
   "Mortiers & Enduits": Layers,
+  "Adjuvants Beton": Boxes,
   "Adhesifs epoxy": Shield,
   "Primaires & Fixateurs": Paintbrush,
   "Mastics & Collage": Wrench,
