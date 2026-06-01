@@ -12,7 +12,7 @@ export default function SiteLogo({ className, markClassName, textClassName, show
   return (
     <Link to="/" className={cn("flex items-center gap-3", className)}>
       <img
-        src="/naf.github.io/naf-factory-logo.png"
+        src="/naf-factory-logo.png"
         alt="NAF Factory"
         className={cn("h-11 w-auto object-contain", markClassName)}
       />

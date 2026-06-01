@@ -37,7 +37,7 @@ export default function APropos() {
             <p className="leading-relaxed text-muted-foreground">Notre objectif est simple: rendre le choix produit plus clair, accelerer les demandes de devis et garder un niveau de service digne des grands chantiers.</p>
           </div>
           <div className="relative">
-            <img src="/naf.github.io/hero-storefront.png" alt="Facade du magasin NAF Factory" className="h-80 w-full rounded-lg object-cover shadow-xl" />
+            <img src="/hero-storefront.png" alt="Facade du magasin NAF Factory" className="h-80 w-full rounded-lg object-cover shadow-xl" />
             <div className="absolute -bottom-4 -left-4 rounded-lg bg-secondary p-4 text-white shadow-lg"><p className="font-display text-3xl font-black">15+</p><p className="text-sm text-white/80">Annees d'expertise</p></div>
           </div>
         </div>

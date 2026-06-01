@@ -9,43 +9,43 @@ type BrandLogoProps = {
 export default function BrandLogo({ brand, className }: BrandLogoProps) {
   const logos: Record<Brand, { src: string; alt: string; frame: string; img: string }> = {
     sika: {
-      src: "/naf.github.io/brands/sika.png",
+      src: "/brands/sika.png",
       alt: "Sika",
       frame: "bg-white/95",
       img: "h-16 w-auto object-contain",
     },
     terraco: {
-      src: "/naf.github.io/brands/terraco.png",
+      src: "/brands/terraco.png",
       alt: "Terraco",
       frame: "bg-white/95",
       img: "h-12 w-auto object-contain",
     },
     lafarge: {
-      src: "/naf.github.io/brands/lafarge.png",
+      src: "/brands/lafarge.png",
       alt: "Lafarge",
       frame: "bg-white/90",
       img: "h-12 w-auto object-contain",
     },
     basf: {
-      src: "/naf.github.io/brands/basf.png",
+      src: "/brands/basf.png",
       alt: "BASF",
       frame: "bg-white/95",
       img: "h-12 w-auto object-contain",
     },
     "decor-boya": {
-      src: "/naf.github.io/brands/decor-boya.png",
+      src: "/brands/decor-boya.png",
       alt: "Decor Boya",
       frame: "bg-white/95",
       img: "h-12 w-auto object-contain",
     },
     proseal: {
-      src: "/naf.github.io/brands/proseal.png",
+      src: "/brands/proseal.png",
       alt: "Proseal",
       frame: "bg-white/95",
       img: "h-10 w-auto object-contain",
     },
     victo: {
-      src: "/naf.github.io/brands/victo.png",
+      src: "/brands/victo.png",
       alt: "Victo",
       frame: "bg-white/95",
       img: "h-12 w-auto object-contain",

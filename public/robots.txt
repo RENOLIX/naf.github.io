@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /panier
+Disallow: /auth/
+
+Sitemap: https://naf-factory.com/sitemap.xml

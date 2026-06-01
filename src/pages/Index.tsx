@@ -25,9 +25,9 @@ import { BRANDS, PRODUCTS, type Brand } from "@/lib/products.ts";
 const BEST_SELLERS = PRODUCTS.filter((p) => p.bestSeller).slice(0, 4);
 
 const HERO_SLIDES = [
-  { src: "/naf.github.io/hero-storefront.png", alt: "Facade du magasin NAF Factory" },
-  { src: "/naf.github.io/hero-store-interior.png", alt: "Rayons professionnels du magasin NAF Factory" },
-  { src: "/naf.github.io/hero-store-products.png", alt: "Produits de construction disponibles chez NAF Factory" },
+  { src: "/hero-storefront.png", alt: "Facade du magasin NAF Factory" },
+  { src: "/hero-store-interior.png", alt: "Rayons professionnels du magasin NAF Factory" },
+  { src: "/hero-store-products.png", alt: "Produits de construction disponibles chez NAF Factory" },
 ];
 
 const KPIS = [

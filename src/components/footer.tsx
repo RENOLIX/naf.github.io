@@ -51,7 +51,8 @@ export default function Footer() {
 
       <div className="border-t border-white/10 py-4">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 text-xs text-white/50 md:flex-row md:px-6">
-          <span>© {year} NAF Factory. Tous droits reserves.</span>
+          <span>&copy; {year} NAF Factory. Tous droits reserves.</span>
+          <span>Developed by SITEMAGIQUE</span>
           <span>Distributeur Officiel Sika - Terraco - Lafarge - BASF - Decor Boya - Proseal - Victo</span>
         </div>
       </div>

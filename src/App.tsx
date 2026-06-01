@@ -13,7 +13,7 @@ import ProductDetail from "@/pages/produits/detail.tsx";
 export default function App() {
   return (
     <>
-      <BrowserRouter basename="/naf.github.io">
+      <BrowserRouter>
         <Routes>
           <Route path="/auth/callback" element={<AuthCallback />} />
           <Route element={<AppLayout />}>
