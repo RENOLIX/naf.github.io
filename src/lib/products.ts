@@ -1,7 +1,7 @@
 import type { ComponentType } from "react";
 import { Boxes, Droplets, Layers, Paintbrush, Shield, Sparkles, Wrench } from "lucide-react";
 
-export type Brand = "sika" | "terraco" | "lafarge";
+export type Brand = "sika" | "terraco" | "lafarge" | "basf" | "decor-boya" | "proseal" | "victo";
 export type ProductCategory =
   | "Tile Adhesive"
   | "Retail"
@@ -11,7 +11,11 @@ export type ProductCategory =
   | "Primaires & Accrochage"
   | "Protection"
   | "Isolation"
-  | "Mortiers & Enduits";
+  | "Mortiers & Enduits"
+  | "Adhesifs epoxy"
+  | "Primaires & Fixateurs"
+  | "Mastics & Collage"
+  | "Joints & Waterstop";
 
 export type Product = {
   id: string;
@@ -77,6 +81,50 @@ export const BRANDS: Record<Brand, BrandProfile> = {
     mood: "Vert industriel, noir graphique, blocs robustes et donnees lisibles.",
     heroImage: "https://images.unsplash.com/photo-1517089596392-fb9a9033e05b?auto=format&fit=crop&w=1600&q=80",
     icon: Layers,
+  },
+  basf: {
+    name: "BASF",
+    color: "#005B45",
+    accent: "#A7D129",
+    dark: "#06251E",
+    tagline: "Solutions chimiques professionnelles pour collage et protection.",
+    description: "Adhesifs epoxy, resines et solutions techniques de la gamme Master Builders / BASF.",
+    mood: "Vert BASF, lecture technique et fiches chantier tres directes.",
+    heroImage: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1600&q=80",
+    icon: Shield,
+  },
+  "decor-boya": {
+    name: "Decor Boya",
+    color: "#D22630",
+    accent: "#2C9FDB",
+    dark: "#27141A",
+    tagline: "Primaires et peintures de preparation pour supports propres.",
+    description: "Fixateurs et couches d'accrochage Decor Boya pour preparation des murs et facades.",
+    mood: "Rouge, bleu et blanc, presentation peinture claire et orientee finition.",
+    heroImage: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&w=1600&q=80",
+    icon: Paintbrush,
+  },
+  proseal: {
+    name: "Proseal",
+    color: "#1E88E5",
+    accent: "#F6D33C",
+    dark: "#0B1D2D",
+    tagline: "Mastics, silicones et colles pour joints exigeants.",
+    description: "Cartouches Proseal / Nascico pour collage, etancheite, pare-brise et finitions.",
+    mood: "Bleu technique, jaune signaletique et visuels produits tres lisibles.",
+    heroImage: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1600&q=80",
+    icon: Wrench,
+  },
+  victo: {
+    name: "Victo",
+    color: "#29308F",
+    accent: "#ED1C24",
+    dark: "#11143F",
+    tagline: "Joints, waterstop et solutions d'etancheite chantier.",
+    description: "Produits Victo Team pour joints de dilatation, waterstop et accessoires d'isolation.",
+    mood: "Bleu industriel, rouge marque et produits techniques en grand format.",
+    heroImage: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=80",
+    icon: Droplets,
   },
 };
 
@@ -163,6 +211,49 @@ const lafargeProduct = ({
   sourceUrl,
   highlights: ["Solution Lafarge / Holcim", usage, "Disponible chez NAF Factory"],
   specifications: spec(unit, usage, "Lafarge"),
+});
+
+const partnerProduct = ({
+  id,
+  brand,
+  name,
+  category,
+  description,
+  unit,
+  image,
+  sourceUrl,
+  technicalSheet = sourceUrl,
+  usage,
+  colors,
+  badge,
+}: {
+  id: string;
+  brand: Brand;
+  name: string;
+  category: ProductCategory;
+  description: string;
+  unit: string;
+  image: string;
+  sourceUrl: string;
+  technicalSheet?: string;
+  usage: string;
+  colors?: string[];
+  badge?: string;
+}): Product => ({
+  id,
+  brand,
+  name,
+  category,
+  description,
+  unit,
+  formats: [unit],
+  colors,
+  image,
+  technicalSheet,
+  sourceUrl,
+  highlights: [`Produit ${BRANDS[brand].name} original`, usage, "Disponible chez NAF Factory"],
+  specifications: spec(unit, usage, BRANDS[brand].name),
+  badge,
 });
 
 export const PRODUCTS: Product[] = [
@@ -855,6 +946,263 @@ export const PRODUCTS: Product[] = [
     technicalSheet: "https://www.lafarge.dz/sites/algeria/files/2022-04/tectorplast_110_fr.pdf",
     usage: "Crepissage gris interieur et exterieur",
   }),
+  partnerProduct({
+    id: "basf-masterbrace-adh2200-1kg",
+    brand: "basf",
+    name: "MASTER BRACE ADH 2200 1 KG",
+    category: "Adhesifs epoxy",
+    description: "Adhesif epoxy bi-composant MasterBrace ADH 2200 pour collage et ancrage technique.",
+    unit: "Kit 1 kg",
+    image: "/naf.github.io/products/basf/masterbrace-adh2200.jpg",
+    sourceUrl: "https://www.bullshardware.com/products/master-brace-adh-22007-5kg",
+    usage: "Collage epoxy structurel",
+  }),
+  partnerProduct({
+    id: "basf-masterbrace-adh2200-5kg",
+    brand: "basf",
+    name: "MASTER BRACE ADH 2200 5 KG",
+    category: "Adhesifs epoxy",
+    description: "Kit epoxy MasterBrace ADH 2200 en format chantier pour collages resistants.",
+    unit: "Kit 5 kg",
+    image: "/naf.github.io/products/basf/masterbrace-adh2200.jpg",
+    sourceUrl: "https://www.bullshardware.com/products/master-brace-adh-22007-5kg",
+    usage: "Collage epoxy structurel",
+  }),
+  ...[
+    ["bleu", "BLEU"],
+    ["grey", "GREY"],
+    ["white", "WHITE"],
+  ].map(([slug, color]) =>
+    partnerProduct({
+      id: `basf-masterbrace-180-${slug}`,
+      brand: "basf",
+      name: `MASTER BRACE 180 ${color} KIT 5 KG`,
+      category: "Adhesifs epoxy",
+      description: `Kit MasterBrace 180 ${color.toLowerCase()} 5 kg pour revetement et protection epoxy.`,
+      unit: "Kit 5 kg",
+      image: "/naf.github.io/products/basf/masterbrace-180.jpg",
+      sourceUrl: "https://www.psbalgerie.com/product-page/masterprotect-180-peinture-epoxy-imperm%C3%A9abilisante-5kg",
+      usage: "Protection epoxy impermeabilisante",
+      colors: [color],
+    }),
+  ),
+  partnerProduct({
+    id: "basf-adh1414-1kg",
+    brand: "basf",
+    name: "BASF ADH 1414 1 KG",
+    category: "Adhesifs epoxy",
+    description: "Adhesif epoxy ADH 1414 en kit compact pour reparations et collages techniques.",
+    unit: "Kit 1 kg",
+    image: "/naf.github.io/products/basf/adh1414.jpg",
+    sourceUrl: "https://chemicalandapplication.com/product/master-brace-1414/",
+    usage: "Collage et reparation epoxy",
+  }),
+  partnerProduct({
+    id: "basf-adh1414-3kg",
+    brand: "basf",
+    name: "BASF ADH 1414 3KG",
+    category: "Adhesifs epoxy",
+    description: "Adhesif epoxy ADH 1414 en format 3 kg pour travaux de collage et reparation.",
+    unit: "Kit 3 kg",
+    image: "/naf.github.io/products/basf/adh1414.jpg",
+    sourceUrl: "https://chemicalandapplication.com/product/master-brace-1414/",
+    usage: "Collage et reparation epoxy",
+  }),
+  ...[
+    ["jaune", "FIXATEUR JAUNE 20KG", "Jaune"],
+    ["rouge", "FIXATEUR ROUGE 20KG", "Rouge"],
+  ].map(([slug, name, color]) =>
+    partnerProduct({
+      id: `decor-boya-fixateur-${slug}`,
+      brand: "decor-boya",
+      name,
+      category: "Primaires & Fixateurs",
+      description: `Fixateur Decor Boya / Deko Kontak ${color.toLowerCase()} pour preparation et accrochage des supports.`,
+      unit: "Seau 20 kg",
+      image: "/naf.github.io/products/decor-boya/fixateur-colors.png",
+      sourceUrl: "https://www.decorboya.org/",
+      usage: "Primaire d'accrochage avant finition",
+      colors: [color],
+    }),
+  ),
+  partnerProduct({
+    id: "proseal-naci-anchor",
+    brand: "proseal",
+    name: "ANCRAGE CHIMIQUE NACI-ANCHOR",
+    category: "Adhesifs epoxy",
+    description: "Resine de scellement chimique NACI-ANCHOR Proseal pour ancrages haute performance.",
+    unit: "Cartouche 280 ml",
+    image: "/naf.github.io/products/proseal/naci-anchor.jpg",
+    sourceUrl: "https://dekkal.com/",
+    usage: "Scellement chimique et ancrage",
+  }),
+  partnerProduct({
+    id: "proseal-carbosil-noir",
+    brand: "proseal",
+    name: "CARBOSIL NOIR 310ML",
+    category: "Mastics & Collage",
+    description: "Colle pare-brise Proseal Carbosil noire pour vitrage et carrosserie.",
+    unit: "Cartouche 310 ml",
+    image: "/naf.github.io/products/proseal/carbosil.jpg",
+    sourceUrl: "https://bricaillerie.com/",
+    usage: "Collage pare-brise et vitrages",
+    colors: ["Noir"],
+  }),
+  partnerProduct({
+    id: "proseal-motorseal",
+    brand: "proseal",
+    name: "MOTORSEAL 300ML",
+    category: "Mastics & Collage",
+    description: "Mastic Proseal Motorseal pour joints moteur, etancheite mecanique et applications techniques.",
+    unit: "Cartouche 300 ml",
+    image: "/naf.github.io/products/proseal/motorseal.jpg",
+    sourceUrl: "https://www.psbalgerie.com/",
+    usage: "Etancheite mecanique",
+  }),
+  partnerProduct({
+    id: "proseal-crystaseal",
+    brand: "proseal",
+    name: "CRYSTASEAL 300ML",
+    category: "Mastics & Collage",
+    description: "Colle elastique transparente Proseal Crystaseal pour collage et etancheite discrete.",
+    unit: "Cartouche 300 ml",
+    image: "/naf.github.io/products/proseal/crystaseal.jpg",
+    sourceUrl: "https://bricaillerie.com/",
+    usage: "Collage elastique transparent",
+  }),
+  partnerProduct({
+    id: "proseal-nacisil-deco-montage",
+    brand: "proseal",
+    name: "NACSIL DECO MONTAGE 300ML",
+    category: "Mastics & Collage",
+    description: "Colle acrylique Nacisil Deco & Montage pour fixation de decoration et finitions interieures.",
+    unit: "Cartouche 300 ml",
+    image: "/naf.github.io/products/proseal/nacisil-deco-montage.jpg",
+    sourceUrl: "https://bricaillerie.com/",
+    usage: "Collage decoration et montage",
+  }),
+  ...[
+    ["blanc", "NACSIL MULTI-USAGE BLANC 300ML", "Blanc"],
+    ["transparent", "NACSIL MULTI-USAGE TRANSPARENT 300ML", "Transparent"],
+  ].map(([slug, name, color]) =>
+    partnerProduct({
+      id: `proseal-nacisil-multi-${slug}`,
+      brand: "proseal",
+      name,
+      category: "Mastics & Collage",
+      description: `Silicone Proseal Nacisil multi-usage ${color.toLowerCase()} pour joints d'etancheite et collage courant.`,
+      unit: "Cartouche 300 ml",
+      image: "/naf.github.io/products/proseal/nacisil-multi-usage.jpg",
+      sourceUrl: "https://bricaillerie.com/",
+      usage: "Joints d'etancheite multi-usage",
+      colors: [color],
+    }),
+  ),
+  ...[
+    ["gris", "POLYFLEX PU 40 GRIS 300ML", "Gris"],
+    ["noir", "POLYFLEX PU 40 NOIR 300ML", "Noir"],
+    ["blanc", "POLYFLEX PU40 BLANC 300ML", "Blanc"],
+    ["beige", "POLYFLEX PU40 BEIGE 300ML", "Beige"],
+  ].map(([slug, name, color]) =>
+    partnerProduct({
+      id: `proseal-polyflex-pu40-${slug}`,
+      brand: "proseal",
+      name,
+      category: "Mastics & Collage",
+      description: `Colle polyurethane Proseal Polyflex PU40 ${color.toLowerCase()} pour collage souple et etancheite.`,
+      unit: "Cartouche 300 ml",
+      image: "/naf.github.io/products/proseal/polyflex-pu40.jpg",
+      sourceUrl: "https://www.vcmbat-alger.dz/colle-nascico-polyflex-pu40-proseal.html",
+      usage: "Collage polyurethane souple",
+      colors: [color],
+    }),
+  ),
+  partnerProduct({
+    id: "proseal-extraseal-high-tack-blanc",
+    brand: "proseal",
+    name: "EXTRASEAL HIGH TACK BLANC 280ML",
+    category: "Mastics & Collage",
+    description: "Colle mastic Proseal Extraseal High Tack blanche pour collage puissant et maintien immediat.",
+    unit: "Cartouche 280 ml",
+    image: "/naf.github.io/products/proseal/extraseal-high-tack.jpg",
+    sourceUrl: "https://bricaillerie.com/",
+    usage: "Collage high tack",
+    colors: ["Blanc"],
+  }),
+  partnerProduct({
+    id: "proseal-silicon-fast-bond08",
+    brand: "proseal",
+    name: "SILICON FAST BOND-08 310ML",
+    category: "Mastics & Collage",
+    description: "Silicone colle Proseal Fast Bond-08 pour collage et etancheite rapide en cartouche.",
+    unit: "Cartouche 310 ml",
+    image: "/naf.github.io/products/proseal/silicon-fast-bond08.jpg",
+    sourceUrl: "https://www.ouedkniss.com/",
+    usage: "Collage silicone rapide",
+  }),
+  ...[
+    ["blanc", "ACRYSEAL BLANC 500G", "Blanc"],
+    ["gris", "ACRYSEAL GRIS 500G", "Gris"],
+    ["marron", "ACRYSEAL MARRON 500G", "Marron"],
+  ].map(([slug, name, color]) =>
+    partnerProduct({
+      id: `proseal-acryseal-${slug}`,
+      brand: "proseal",
+      name,
+      category: "Mastics & Collage",
+      description: `Mastic acrylique siliconise Proseal Acryseal ${color.toLowerCase()} pour joints et fissures.`,
+      unit: "Pot 500 g",
+      image: "/naf.github.io/products/proseal/acryseal.jpg",
+      sourceUrl: "https://bricaillerie.com/",
+      usage: "Rebouchage et joint acrylique",
+      colors: [color],
+    }),
+  ),
+  ...[
+    ["200-10", "JOINT WATER STOP 200MM /10M", "200 mm / 10 m"],
+    ["200-15", "JOINT WATER STOP 200MM /15M", "200 mm / 15 m"],
+    ["200-20", "JOINT WATER STOP 200MM /20M", "200 mm / 20 m"],
+    ["250-10", "JOINT WATER STOP 250MM /10M", "250 mm / 10 m"],
+    ["250-15", "JOINT WATER STOP 250MM /15M", "250 mm / 15 m"],
+    ["300-15", "JOINT WATER STOP 300 M/M15 M", "300 mm / 15 m"],
+    ["300-25", "JOINT WATER STOP 300MM/25M", "300 mm / 25 m"],
+  ].map(([slug, name, unit]) =>
+    partnerProduct({
+      id: `victo-waterstop-${slug}`,
+      brand: "victo",
+      name,
+      category: "Joints & Waterstop",
+      description: `Joint waterstop Victo ${unit} pour etancheite des reprises et joints beton.`,
+      unit,
+      image: "/naf.github.io/products/victo/waterstop-plat.png",
+      sourceUrl: "https://victoteam.com/product/water-stop-plat/",
+      usage: "Etancheite des joints beton",
+    }),
+  ),
+  partnerProduct({
+    id: "victo-tapis-foam-ep8-blanc",
+    brand: "victo",
+    name: "TAPIS FOAM EP-8 BLANC",
+    category: "Joints & Waterstop",
+    description: "Tapis foam Victo EP-8 blanc pour isolation et traitement des joints.",
+    unit: "EP-8 blanc",
+    image: "/naf.github.io/products/victo/joint-dilatation-15cm.webp",
+    sourceUrl: "https://victoteam.com/product/joint-dilatation-15cm/",
+    usage: "Isolation et joint de dilatation",
+    colors: ["Blanc"],
+  }),
+  partnerProduct({
+    id: "victo-tapis-foam-ep6-gris",
+    brand: "victo",
+    name: "TAPIS FOAM EP-6 GRIS",
+    category: "Joints & Waterstop",
+    description: "Tapis foam Victo EP-6 gris pour isolation et traitement des joints.",
+    unit: "EP-6 gris",
+    image: "/naf.github.io/products/victo/joint-de-sol.webp",
+    sourceUrl: "https://victoteam.com/product/joint-de-sol/",
+    usage: "Isolation et joint de sol",
+    colors: ["Gris"],
+  }),
 ];
 
 export const CATEGORY_ICONS: Record<ProductCategory, ComponentType<{ className?: string }>> = {
@@ -867,4 +1215,8 @@ export const CATEGORY_ICONS: Record<ProductCategory, ComponentType<{ className?:
   Protection: Shield,
   Isolation: Sparkles,
   "Mortiers & Enduits": Layers,
+  "Adhesifs epoxy": Shield,
+  "Primaires & Fixateurs": Paintbrush,
+  "Mastics & Collage": Wrench,
+  "Joints & Waterstop": Droplets,
 };

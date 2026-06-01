@@ -78,11 +78,11 @@ export default function APropos() {
         <div className="mx-auto max-w-7xl text-center">
           <h2 className="mb-4 font-display text-4xl font-black">NOS PARTENAIRES OFFICIELS</h2>
           <p className="mx-auto mb-10 max-w-xl text-white/70">Des partenariats avec des acteurs reconnus des materiaux de construction.</p>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            {(["sika", "terraco", "lafarge"] as const).map((brand) => (
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {(["sika", "terraco", "lafarge", "basf", "decor-boya", "proseal", "victo"] as const).map((brand) => (
               <div key={brand} className="rounded-lg border border-white/10 bg-white/10 p-6 transition-colors hover:bg-white/15">
                 <div className="mb-4 flex justify-center scale-75"><BrandLogo brand={brand} /></div>
-                <p className="text-sm text-white/70">{brand === "sika" ? "Chimie de construction et etancheite" : brand === "terraco" ? "Finitions decoratives et facades" : "Ciment, beton et granulats"}</p>
+                <p className="text-sm text-white/70">Partenaire produits pour chantiers professionnels</p>
               </div>
             ))}
           </div>

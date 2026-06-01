@@ -29,7 +29,7 @@ export default function Navbar() {
           <span className="flex items-center gap-1.5"><Phone className="h-3.5 w-3.5" /> 0665 12 98 95</span>
           <span className="flex items-center gap-1.5"><Mail className="h-3.5 w-3.5" /> contact@naf-factory.com</span>
         </div>
-        <span className="font-medium tracking-wide">Distributeur Officiel SIKA - TERRACO - LAFARGE</span>
+        <span className="font-medium tracking-wide">Distributeur Officiel SIKA - TERRACO - LAFARGE - BASF - PROSEAL</span>
       </div>
 
       <header className="sticky top-0 z-50">

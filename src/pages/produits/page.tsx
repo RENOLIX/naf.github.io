@@ -10,6 +10,10 @@ const ALL_BRANDS: { value: Brand | "all"; label: string }[] = [
   { value: "sika", label: "Sika" },
   { value: "terraco", label: "Terraco" },
   { value: "lafarge", label: "Lafarge" },
+  { value: "basf", label: "BASF" },
+  { value: "decor-boya", label: "Decor Boya" },
+  { value: "proseal", label: "Proseal" },
+  { value: "victo", label: "Victo" },
 ];
 
 export default function Produits() {
@@ -47,7 +51,7 @@ export default function Produits() {
           <div>
             <p className="mb-2 text-xs font-bold uppercase tracking-widest text-white">{currentBrand ? `Univers ${currentBrand.name}` : "Catalogue"}</p>
             <h1 className="font-display text-5xl font-black text-white">{currentBrand ? currentBrand.name.toUpperCase() : "NOS PRODUITS"}</h1>
-            <p className="mt-3 max-w-xl text-white">{currentBrand ? currentBrand.tagline : "Selection professionnelle Sika, Terraco et Lafarge pour chantiers algeriens."}</p>
+            <p className="mt-3 max-w-xl text-white">{currentBrand ? currentBrand.tagline : "Selection professionnelle Sika, Terraco, Lafarge, BASF, Decor Boya, Proseal et Victo pour chantiers algeriens."}</p>
             {currentBrand && <p className="mt-2 max-w-xl text-sm text-white/85">{currentBrand.mood}</p>}
           </div>
           {currentBrand && <BrandLogo brand={selectedBrand as Brand} className="hidden md:inline-flex" />}

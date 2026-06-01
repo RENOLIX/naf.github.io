@@ -26,6 +26,30 @@ export default function BrandLogo({ brand, className }: BrandLogoProps) {
       frame: "bg-white/90",
       img: "h-12 w-auto object-contain",
     },
+    basf: {
+      src: "/naf.github.io/brands/basf.png",
+      alt: "BASF",
+      frame: "bg-white/95",
+      img: "h-12 w-auto object-contain",
+    },
+    "decor-boya": {
+      src: "/naf.github.io/brands/decor-boya.png",
+      alt: "Decor Boya",
+      frame: "bg-white/95",
+      img: "h-12 w-auto object-contain",
+    },
+    proseal: {
+      src: "/naf.github.io/brands/proseal.png",
+      alt: "Proseal",
+      frame: "bg-white/95",
+      img: "h-10 w-auto object-contain",
+    },
+    victo: {
+      src: "/naf.github.io/brands/victo.png",
+      alt: "Victo",
+      frame: "bg-white/95",
+      img: "h-12 w-auto object-contain",
+    },
   };
   const logo = logos[brand];
   return (

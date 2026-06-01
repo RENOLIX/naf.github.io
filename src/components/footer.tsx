@@ -15,6 +15,10 @@ export default function Footer() {
             <BrandLogo brand="sika" className="scale-75" />
             <BrandLogo brand="terraco" className="scale-75" />
             <BrandLogo brand="lafarge" className="scale-75" />
+            <BrandLogo brand="basf" className="scale-75" />
+            <BrandLogo brand="decor-boya" className="scale-75" />
+            <BrandLogo brand="proseal" className="scale-75" />
+            <BrandLogo brand="victo" className="scale-75" />
           </div>
         </div>
       </div>
@@ -33,7 +37,7 @@ export default function Footer() {
         </div>
 
         <FooterLinks title="Navigation" links={[["Accueil", "/"], ["Produits", "/produits"], ["A Propos", "/a-propos"], ["Contact", "/contact"], ["Mon Panier", "/panier"]]} />
-        <FooterLinks title="Nos Marques" links={[["Produits Sika", "/produits?marque=sika"], ["Produits Terraco", "/produits?marque=terraco"], ["Produits Lafarge", "/produits?marque=lafarge"]]} />
+        <FooterLinks title="Nos Marques" links={[["Produits Sika", "/produits?marque=sika"], ["Produits Terraco", "/produits?marque=terraco"], ["Produits Lafarge", "/produits?marque=lafarge"], ["Produits BASF", "/produits?marque=basf"], ["Produits Decor Boya", "/produits?marque=decor-boya"], ["Produits Proseal", "/produits?marque=proseal"], ["Produits Victo", "/produits?marque=victo"]]} />
 
         <div>
           <h4 className="mb-4 text-sm font-bold uppercase tracking-widest text-white/50">Contact</h4>
@@ -48,7 +52,7 @@ export default function Footer() {
       <div className="border-t border-white/10 py-4">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 text-xs text-white/50 md:flex-row md:px-6">
           <span>© {year} NAF Factory. Tous droits reserves.</span>
-          <span>Distributeur Officiel Sika - Terraco - Lafarge</span>
+          <span>Distributeur Officiel Sika - Terraco - Lafarge - BASF - Decor Boya - Proseal - Victo</span>
         </div>
       </div>
     </footer>
