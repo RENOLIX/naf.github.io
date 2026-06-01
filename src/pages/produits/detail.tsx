@@ -24,7 +24,8 @@ export default function ProductDetail() {
   }
 
   const related = PRODUCTS.filter((item) => item.category === product.category && item.id !== product.id).slice(0, 3);
-  const sheetIsPdf = product.technicalSheet.toLowerCase().includes(".pdf");
+  const hasTechnicalSheet = Boolean(product.technicalSheet);
+  const sheetIsPdf = hasTechnicalSheet && product.technicalSheet.toLowerCase().includes(".pdf");
   const brand = BRANDS[product.brand];
 
   return (
@@ -81,9 +82,11 @@ export default function ProductDetail() {
               <button onClick={() => addItem(product)} className="inline-flex items-center gap-2 rounded bg-secondary px-5 py-3 text-sm font-black text-white transition-colors hover:bg-secondary/90">
                 <ShoppingCart className="h-4 w-4" /> Ajouter au panier
               </button>
-              <a href={product.technicalSheet} target="_blank" rel="noreferrer" style={{ color: "#07152f" }} className="inline-flex items-center gap-2 rounded border border-border bg-white px-5 py-3 text-sm font-black shadow-sm transition-colors hover:bg-muted">
-                {sheetIsPdf ? <Download className="h-4 w-4" /> : <FileText className="h-4 w-4" />} {sheetIsPdf ? "Fiche technique PDF" : "Fiche officielle"}
-              </a>
+              {hasTechnicalSheet && (
+                <a href={product.technicalSheet} target="_blank" rel="noreferrer" style={{ color: "#07152f" }} className="inline-flex items-center gap-2 rounded border border-border bg-white px-5 py-3 text-sm font-black shadow-sm transition-colors hover:bg-muted">
+                  {sheetIsPdf ? <Download className="h-4 w-4" /> : <FileText className="h-4 w-4" />} {sheetIsPdf ? "Fiche technique PDF" : "Fiche officielle"}
+                </a>
+              )}
             </div>
           </div>
         </div>
