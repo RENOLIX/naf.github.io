@@ -37,7 +37,7 @@ export default function Footer() {
         </div>
 
         <FooterLinks title="Navigation" links={[["Accueil", "/"], ["Produits", "/produits"], ["A Propos", "/a-propos"], ["Contact", "/contact"], ["Mon Panier", "/panier"]]} />
-        <FooterLinks title="Nos Marques" links={[["Produits Sika", "/produits?marque=sika"], ["Produits Terraco", "/produits?marque=terraco"], ["Produits Lafarge", "/produits?marque=lafarge"], ["Produits BASF", "/produits?marque=basf"], ["Produits Decor Boya", "/produits?marque=decor-boya"], ["Produits Proseal", "/produits?marque=proseal"], ["Produits Victo", "/produits?marque=victo"]]} />
+        <FooterLinks title="Nos Marques" links={[["Produits Sika", "/produits-sika/"], ["Produits Terraco", "/produits?marque=terraco"], ["Produits Lafarge", "/produits?marque=lafarge"], ["Produits BASF", "/produits?marque=basf"], ["Produits Decor Boya", "/produits?marque=decor-boya"], ["Produits Proseal", "/produits?marque=proseal"], ["Produits Victo", "/produits?marque=victo"]]} />
 
         <div>
           <h4 className="mb-4 text-sm font-bold uppercase tracking-widest text-white/50">Contact</h4>

@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
-import { useSearchParams } from "react-router-dom";
-import { Search, SlidersHorizontal, X } from "lucide-react";
+import { Navigate, useNavigate, useSearchParams } from "react-router-dom";
+import { BadgeCheck, Search, SlidersHorizontal, X } from "lucide-react";
 import BrandLogo from "@/components/brand-logo.tsx";
 import ProductCard from "@/components/product-card.tsx";
 import { BRANDS, PRODUCTS, type Brand } from "@/lib/products.ts";
@@ -16,10 +16,16 @@ const ALL_BRANDS: { value: Brand | "all"; label: string }[] = [
   { value: "victo", label: "Victo" },
 ];
 
-export default function Produits() {
+type ProduitsProps = {
+  forcedBrand?: Brand;
+};
+
+export default function Produits({ forcedBrand }: ProduitsProps) {
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
   const [search, setSearch] = useState("");
-  const selectedBrand = (searchParams.get("marque") as Brand | null) ?? "all";
+  const queryBrand = (searchParams.get("marque") as Brand | null) ?? "all";
+  const selectedBrand = forcedBrand ?? queryBrand;
   const [selectedCategory, setSelectedCategory] = useState("Toutes");
   const currentBrand = selectedBrand !== "all" ? BRANDS[selectedBrand] : null;
 
@@ -40,8 +46,20 @@ export default function Produits() {
 
   const setBrand = (brand: Brand | "all") => {
     setSelectedCategory("Toutes");
+    if (brand === "sika") {
+      navigate("/produits-sika/");
+      return;
+    }
+    if (forcedBrand) {
+      navigate(brand === "all" ? "/produits" : `/produits?marque=${brand}`);
+      return;
+    }
     setSearchParams(brand === "all" ? {} : { marque: brand });
   };
+
+  if (!forcedBrand && queryBrand === "sika") {
+    return <Navigate to="/produits-sika/" replace />;
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -50,8 +68,16 @@ export default function Produits() {
         <div className="relative mx-auto grid max-w-7xl gap-8 md:grid-cols-[1fr_auto] md:items-center">
           <div>
             <p className="mb-2 text-xs font-bold uppercase tracking-widest text-white">{currentBrand ? `Univers ${currentBrand.name}` : "Catalogue"}</p>
-            <h1 className="font-display text-5xl font-black text-white">{currentBrand ? currentBrand.name.toUpperCase() : "NOS PRODUITS"}</h1>
-            <p className="mt-3 max-w-xl text-white">{currentBrand ? currentBrand.tagline : "Selection professionnelle Sika, Terraco, Lafarge, BASF, Decor Boya, Proseal et Victo pour chantiers algeriens."}</p>
+            <h1 className="font-display text-5xl font-black text-white">
+              {forcedBrand === "sika" ? "PRODUITS SIKA EN ALGÉRIE" : currentBrand ? currentBrand.name.toUpperCase() : "NOS PRODUITS"}
+            </h1>
+            <p className="mt-3 max-w-2xl text-white">
+              {forcedBrand === "sika"
+                ? "Découvrez les produits Sika disponibles en Algérie chez NAF Factory pour l'étanchéité, le collage, la réparation, le scellement et les solutions béton."
+                : currentBrand
+                  ? currentBrand.tagline
+                  : "Selection professionnelle Sika, Terraco, Lafarge, BASF, Decor Boya, Proseal et Victo pour chantiers algeriens."}
+            </p>
             {currentBrand && <p className="mt-2 max-w-xl text-sm text-white/85">{currentBrand.mood}</p>}
           </div>
           {currentBrand && <BrandLogo brand={selectedBrand as Brand} className="hidden md:inline-flex" />}
@@ -98,6 +124,54 @@ export default function Produits() {
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {filtered.map((product) => <ProductCard key={product.id} product={product} />)}
           </div>
+        )}
+
+        {forcedBrand === "sika" && (
+          <section className="mt-16 border-t border-border pt-12" aria-labelledby="sika-expertise-title">
+            <div className="grid gap-10 lg:grid-cols-[1.15fr_.85fr]">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Distributeur Sika en Algérie</p>
+                <h2 id="sika-expertise-title" className="mt-3 font-display text-3xl font-black text-foreground md:text-4xl">
+                  Des solutions Sika pour chaque étape du chantier
+                </h2>
+                <div className="mt-5 space-y-4 text-sm leading-7 text-muted-foreground md:text-base">
+                  <p>
+                    NAF Factory accompagne les professionnels du bâtiment dans le choix de produits Sika adaptés aux
+                    travaux d'étanchéité, de pose de carrelage, de réparation du béton, de scellement et de collage.
+                    Chaque référence du catalogue dispose d'une page détaillée avec ses formats, ses usages et sa fiche
+                    technique officielle lorsqu'elle est disponible.
+                  </p>
+                  <p>
+                    Notre équipe vous aide à identifier la solution correspondant au support, aux contraintes du chantier
+                    et au conditionnement recherché. Ajoutez les produits au panier de devis pour transmettre une demande
+                    structurée et recevoir un retour commercial.
+                  </p>
+                </div>
+              </div>
+              <div className="rounded-lg border border-border bg-card p-6">
+                <div className="flex items-center gap-2 text-sm font-black uppercase tracking-wide text-foreground">
+                  <BadgeCheck className="h-5 w-5 text-secondary" />
+                  Gammes Sika disponibles
+                </div>
+                <ul className="mt-5 grid gap-3 text-sm text-muted-foreground sm:grid-cols-2 lg:grid-cols-1">
+                  <li>Colles à carrelage et joints</li>
+                  <li>Étanchéité et hydrofuges</li>
+                  <li>Mortiers de réparation</li>
+                  <li>Résines, mastics et scellement</li>
+                  <li>Adjuvants et solutions pour béton</li>
+                  <li>Primaires et produits d'accrochage</li>
+                </ul>
+                <a
+                  href="https://wa.me/213665129895?text=Bonjour%20NAF%20Factory%2C%20je%20souhaite%20un%20devis%20pour%20des%20produits%20Sika."
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-7 inline-flex rounded bg-secondary px-5 py-3 text-sm font-black text-white transition-colors hover:bg-secondary/90"
+                >
+                  Demander un devis Sika
+                </a>
+              </div>
+            </div>
+          </section>
         )}
       </div>
     </div>

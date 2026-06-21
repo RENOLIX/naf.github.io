@@ -9,6 +9,7 @@ import NotFound from "@/pages/NotFound.tsx";
 import Panier from "@/pages/panier/page.tsx";
 import Produits from "@/pages/produits/page.tsx";
 import ProductDetail from "@/pages/produits/detail.tsx";
+import SikaProductsPage from "@/pages/produits/sika-page.tsx";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
           <Route element={<AppLayout />}>
             <Route path="/" element={<Index />} />
             <Route path="/produits" element={<Produits />} />
+            <Route path="/produits-sika" element={<SikaProductsPage />} />
             <Route path="/produits/:id" element={<ProductDetail />} />
             <Route path="/panier" element={<Panier />} />
             <Route path="/a-propos" element={<APropos />} />
