@@ -2,9 +2,9 @@ import Produits from "@/pages/produits/page.tsx";
 import { PRODUCTS } from "@/lib/products.ts";
 import { usePageSeo } from "@/hooks/use-page-seo.ts";
 
-const TITLE = "Produits Sika en Algérie | Distributeur agréé – NAF Factory";
+const TITLE = "Produits Sika Algérie | Distributeur agréé NAF Factory";
 const DESCRIPTION =
-  "Découvrez les produits Sika disponibles en Algérie chez NAF Factory : étanchéité, mortiers, colles, résines, scellement et solutions pour béton. Demandez un devis.";
+  "Découvrez les produits Sika en Algérie chez NAF Factory, distributeur agréé : étanchéité, mortiers, colles, résines et béton. Demandez un devis.";
 const CANONICAL = "https://naf-factory.com/produits-sika/";
 
 const sikaProducts = PRODUCTS.filter((product) => product.brand === "sika");

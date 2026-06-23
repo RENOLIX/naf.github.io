@@ -69,11 +69,11 @@ export default function Produits({ forcedBrand }: ProduitsProps) {
           <div>
             <p className="mb-2 text-xs font-bold uppercase tracking-widest text-white">{currentBrand ? `Univers ${currentBrand.name}` : "Catalogue"}</p>
             <h1 className="font-display text-5xl font-black text-white">
-              {forcedBrand === "sika" ? "PRODUITS SIKA EN ALGÉRIE" : currentBrand ? currentBrand.name.toUpperCase() : "NOS PRODUITS"}
+              {forcedBrand === "sika" ? "Produits Sika Algérie | Distributeur agréé NAF Factory" : currentBrand ? currentBrand.name.toUpperCase() : "NOS PRODUITS"}
             </h1>
             <p className="mt-3 max-w-2xl text-white">
               {forcedBrand === "sika"
-                ? "Découvrez les produits Sika disponibles en Algérie chez NAF Factory pour l'étanchéité, le collage, la réparation, le scellement et les solutions béton."
+                ? "NAF Factory est votre distributeur agréé de produits Sika en Algérie pour l'étanchéité, le collage, la réparation, le scellement et les solutions béton."
                 : currentBrand
                   ? currentBrand.tagline
                   : "Selection professionnelle Sika, Terraco, Lafarge, BASF, Decor Boya, Proseal et Victo pour chantiers algeriens."}
@@ -130,21 +130,30 @@ export default function Produits({ forcedBrand }: ProduitsProps) {
           <section className="mt-16 border-t border-border pt-12" aria-labelledby="sika-expertise-title">
             <div className="grid gap-10 lg:grid-cols-[1.15fr_.85fr]">
               <div>
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Distributeur Sika en Algérie</p>
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Produits Sika disponibles en Algérie</p>
                 <h2 id="sika-expertise-title" className="mt-3 font-display text-3xl font-black text-foreground md:text-4xl">
-                  Des solutions Sika pour chaque étape du chantier
+                  Catalogue de produits Sika pour les chantiers algériens
                 </h2>
                 <div className="mt-5 space-y-4 text-sm leading-7 text-muted-foreground md:text-base">
                   <p>
-                    NAF Factory accompagne les professionnels du bâtiment dans le choix de produits Sika adaptés aux
-                    travaux d'étanchéité, de pose de carrelage, de réparation du béton, de scellement et de collage.
-                    Chaque référence du catalogue dispose d'une page détaillée avec ses formats, ses usages et sa fiche
-                    technique officielle lorsqu'elle est disponible.
+                    NAF Factory est un distributeur agréé de produits Sika en Algérie. Notre catalogue réunit des
+                    solutions Sika pour l'étanchéité, la pose de carrelage, la réparation du béton, le scellement,
+                    le collage et les adjuvants. Chaque produit Sika dispose d'une page détaillée avec ses formats,
+                    ses usages et sa fiche technique officielle lorsqu'elle est disponible.
                   </p>
                   <p>
-                    Notre équipe vous aide à identifier la solution correspondant au support, aux contraintes du chantier
-                    et au conditionnement recherché. Ajoutez les produits au panier de devis pour transmettre une demande
-                    structurée et recevoir un retour commercial.
+                    En choisissant NAF Factory pour vos produits Sika en Algérie, vous bénéficiez d'un accompagnement
+                    commercial pour identifier la solution adaptée au support, aux contraintes du chantier et au
+                    conditionnement recherché. Ajoutez les produits Sika au panier pour transmettre une demande de devis
+                    claire à notre équipe.
+                  </p>
+                  <h3 className="pt-2 font-display text-xl font-black text-foreground">
+                    Pourquoi choisir un distributeur agréé Sika en Algérie ?
+                  </h3>
+                  <p>
+                    Un distributeur agréé vous aide à comparer les produits Sika, à consulter les informations techniques
+                    et à préparer une commande cohérente. NAF Factory accompagne entreprises, artisans et responsables
+                    de chantier en Algérie avec une sélection de produits Sika pour les travaux neufs et la rénovation.
                   </p>
                 </div>
               </div>
