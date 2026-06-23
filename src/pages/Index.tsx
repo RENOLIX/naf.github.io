@@ -196,7 +196,7 @@ export default function Index() {
             {(Object.entries(BRANDS) as [Brand, (typeof BRANDS)[Brand]][]).map(([key, brand]) => (
               <Link
                 key={key}
-                to={key === "sika" ? "/produits-sika/" : `/produits?marque=${key}`}
+                to={key === "sika" ? "/produits-sika-algerie-distributeur-agree-naf-factory/" : `/produits?marque=${key}`}
                 className="group relative min-h-[330px] overflow-hidden rounded-lg border border-border bg-slate-950 p-7 text-white shadow-sm transition hover:-translate-y-1 hover:shadow-2xl"
               >
                 <img src={brand.heroImage} alt="" className="absolute inset-0 h-full w-full object-cover opacity-32 transition duration-500 group-hover:scale-105" />
@@ -224,7 +224,7 @@ export default function Index() {
                 Les adjuvants Sika les plus demandes.
               </h2>
             </div>
-            <Link to="/produits-sika/" className="inline-flex items-center gap-2 text-sm font-extrabold text-secondary">
+            <Link to="/produits-sika-algerie-distributeur-agree-naf-factory/" className="inline-flex items-center gap-2 text-sm font-extrabold text-secondary">
               Voir les produits Sika <ArrowRight className="h-4 w-4" />
             </Link>
           </div>

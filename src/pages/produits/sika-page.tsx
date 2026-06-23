@@ -5,7 +5,8 @@ import { usePageSeo } from "@/hooks/use-page-seo.ts";
 const TITLE = "Produits Sika Algérie | Distributeur agréé NAF Factory";
 const DESCRIPTION =
   "Découvrez les produits Sika en Algérie chez NAF Factory, distributeur agréé : étanchéité, mortiers, colles, résines et béton. Demandez un devis.";
-const CANONICAL = "https://naf-factory.com/produits-sika/";
+const CANONICAL =
+  "https://naf-factory.com/produits-sika-algerie-distributeur-agree-naf-factory/";
 
 const sikaProducts = PRODUCTS.filter((product) => product.brand === "sika");
 

@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils.ts";
 const NAV_LINKS = [
   { label: "Accueil", href: "/" },
   { label: "Produits", href: "/produits" },
-  { label: "Sika", href: "/produits-sika/" },
+  { label: "Sika", href: "/produits-sika-algerie-distributeur-agree-naf-factory/" },
   { label: "Terraco", href: "/produits?marque=terraco" },
   { label: "Lafarge", href: "/produits?marque=lafarge" },
   { label: "A Propos", href: "/a-propos" },

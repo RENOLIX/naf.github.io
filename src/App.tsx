@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Toaster } from "sonner";
 import AppLayout from "@/pages/_layout/app-layout.tsx";
 import APropos from "@/pages/a-propos/page.tsx";
@@ -20,7 +20,8 @@ export default function App() {
           <Route element={<AppLayout />}>
             <Route path="/" element={<Index />} />
             <Route path="/produits" element={<Produits />} />
-            <Route path="/produits-sika" element={<SikaProductsPage />} />
+            <Route path="/produits-sika" element={<Navigate to="/produits-sika-algerie-distributeur-agree-naf-factory/" replace />} />
+            <Route path="/produits-sika-algerie-distributeur-agree-naf-factory" element={<SikaProductsPage />} />
             <Route path="/produits/:id" element={<ProductDetail />} />
             <Route path="/panier" element={<Panier />} />
             <Route path="/a-propos" element={<APropos />} />

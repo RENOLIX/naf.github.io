@@ -20,6 +20,9 @@ type ProduitsProps = {
   forcedBrand?: Brand;
 };
 
+const SIKA_PRODUCTS_PATH =
+  "/produits-sika-algerie-distributeur-agree-naf-factory/";
+
 export default function Produits({ forcedBrand }: ProduitsProps) {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -47,7 +50,7 @@ export default function Produits({ forcedBrand }: ProduitsProps) {
   const setBrand = (brand: Brand | "all") => {
     setSelectedCategory("Toutes");
     if (brand === "sika") {
-      navigate("/produits-sika/");
+      navigate(SIKA_PRODUCTS_PATH);
       return;
     }
     if (forcedBrand) {
@@ -58,7 +61,7 @@ export default function Produits({ forcedBrand }: ProduitsProps) {
   };
 
   if (!forcedBrand && queryBrand === "sika") {
-    return <Navigate to="/produits-sika/" replace />;
+    return <Navigate to={SIKA_PRODUCTS_PATH} replace />;
   }
 
   return (
@@ -154,6 +157,61 @@ export default function Produits({ forcedBrand }: ProduitsProps) {
                     Un distributeur agréé vous aide à comparer les produits Sika, à consulter les informations techniques
                     et à préparer une commande cohérente. NAF Factory accompagne entreprises, artisans et responsables
                     de chantier en Algérie avec une sélection de produits Sika pour les travaux neufs et la rénovation.
+                  </p>
+                  <h3 className="pt-2 font-display text-xl font-black text-foreground">
+                    Comment choisir le bon produit Sika ?
+                  </h3>
+                  <p>
+                    Le choix dépend d'abord du support et du résultat attendu. Pour un mur ou un sol carrelé, vérifiez
+                    le type de carreau, le lieu d'application, la porosité du support et les contraintes d'humidité.
+                    Pour une réparation de béton, identifiez la profondeur de reprise, l'état des armatures et
+                    l'exposition de l'ouvrage. Pour un scellement ou un collage, précisez les matériaux à assembler,
+                    la charge, les mouvements possibles et les conditions de mise en œuvre. Ces informations permettent
+                    à NAF Factory de vous orienter vers les produits Sika les plus cohérents avec votre chantier.
+                  </p>
+                  <h3 className="pt-2 font-display text-xl font-black text-foreground">
+                    Produits Sika pour l'étanchéité et la protection
+                  </h3>
+                  <p>
+                    Les travaux d'étanchéité concernent les terrasses, salles d'eau, réservoirs, façades et ouvrages
+                    exposés à l'humidité. Le catalogue comprend notamment des hydrofuges, des revêtements cimentaires,
+                    des solutions souples et des mastics. Avant de choisir, il faut contrôler la nature du support,
+                    les fissures existantes, la pression d'eau et la finition souhaitée. Une préparation correcte reste
+                    essentielle : nettoyage, réparation des défauts, traitement des angles et respect des consommations
+                    indiquées dans la fiche technique du produit Sika.
+                  </p>
+                  <h3 className="pt-2 font-display text-xl font-black text-foreground">
+                    Colles à carrelage, joints et primaires Sika
+                  </h3>
+                  <p>
+                    Pour la pose de carrelage, les produits Sika couvrent plusieurs besoins : collage intérieur ou
+                    extérieur, carreaux de différents formats, supports cimentaires et zones humides. Le primaire sert
+                    à régulariser ou renforcer l'adhérence selon le support, tandis que le joint assure la finition et
+                    contribue à la durabilité de l'ensemble. Comparez les formats, les couleurs disponibles, le temps
+                    ouvert et les conditions d'application avant de commander. Les pages produits de NAF Factory
+                    regroupent ces informations pour faciliter votre sélection.
+                  </p>
+                  <h3 className="pt-2 font-display text-xl font-black text-foreground">
+                    Mortiers de réparation, scellement et solutions béton
+                  </h3>
+                  <p>
+                    Les mortiers Sika sont utilisés pour réparer, reproﬁler ou protéger des éléments en béton. Les
+                    produits de scellement répondent aux besoins d'ancrage, de calage et de fixation d'équipements.
+                    Les adjuvants pour béton permettent d'agir sur l'ouvrabilité, la réduction d'eau, le maintien de
+                    consistance ou l'imperméabilisation. Le dosage, le malaxage, la température et la préparation du
+                    support doivent respecter la notice officielle. Pour les projets sensibles, transmettez à
+                    NAF Factory les dimensions, quantités et contraintes afin d'obtenir une demande de devis précise.
+                  </p>
+                  <h3 className="pt-2 font-display text-xl font-black text-foreground">
+                    Disponibilité, fiches techniques et devis en Algérie
+                  </h3>
+                  <p>
+                    La disponibilité peut varier selon le conditionnement et la référence. Consultez le catalogue,
+                    ouvrez la fiche du produit Sika recherché, vérifiez ses formats puis ajoutez-le au panier de devis.
+                    Indiquez votre nom, votre société, votre wilaya, les quantités estimées et les délais souhaités.
+                    L'équipe NAF Factory pourra alors vous répondre avec une proposition mieux structurée. Pour une
+                    demande urgente, utilisez le bouton WhatsApp afin de communiquer directement les informations
+                    principales de votre chantier en Algérie.
                   </p>
                 </div>
               </div>

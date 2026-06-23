@@ -32,7 +32,7 @@ export default function ProductDetail() {
     <div className="min-h-screen bg-background">
       <section className="bg-primary px-4 py-10 text-white">
         <div className="mx-auto max-w-7xl">
-          <Link to={product.brand === "sika" ? "/produits-sika/" : `/produits?marque=${product.brand}`} className="inline-flex items-center gap-2 text-sm font-bold text-white">
+          <Link to={product.brand === "sika" ? "/produits-sika-algerie-distributeur-agree-naf-factory/" : `/produits?marque=${product.brand}`} className="inline-flex items-center gap-2 text-sm font-bold text-white">
             <ArrowLeft className="h-4 w-4" /> Retour aux produits {brand.name}
           </Link>
           <div className="mt-7 flex flex-wrap items-end justify-between gap-5">

@@ -5,7 +5,8 @@ await copyFile("dist/index.html", "dist/404.html");
 const sikaTitle = "Produits Sika Algérie | Distributeur agréé NAF Factory";
 const sikaDescription =
   "Découvrez les produits Sika en Algérie chez NAF Factory, distributeur agréé : étanchéité, mortiers, colles, résines et béton. Demandez un devis.";
-const sikaCanonical = "https://naf-factory.com/produits-sika/";
+const sikaCanonical =
+  "https://naf-factory.com/produits-sika-algerie-distributeur-agree-naf-factory/";
 const sikaStructuredData = {
   "@context": "https://schema.org",
   "@graph": [
@@ -73,6 +74,48 @@ const sikaFallbackContent = `
           Consultez les produits Sika disponibles, choisissez les références nécessaires et contactez NAF Factory
           pour obtenir un devis adapté à votre chantier en Algérie.
         </p>
+        <h2>Comment choisir le bon produit Sika pour votre chantier ?</h2>
+        <p>
+          Le choix d'un produit Sika dépend du support, de l'usage et des contraintes du chantier. Pour un collage
+          de carrelage, précisez le format des carreaux, le type de support, l'application intérieure ou extérieure
+          et la présence d'humidité. Pour une réparation du béton, indiquez la profondeur de reprise, l'état de
+          l'ouvrage et son exposition. Pour un scellement ou un collage technique, il faut connaître les matériaux
+          concernés, les charges et les mouvements possibles. Ces informations aident le distributeur agréé
+          NAF Factory à orienter votre demande vers les produits Sika appropriés.
+        </p>
+        <h2>Produits Sika pour l'étanchéité en Algérie</h2>
+        <p>
+          L'étanchéité d'une terrasse, d'une salle d'eau, d'un réservoir ou d'une façade nécessite une solution
+          compatible avec le support et les conditions d'exposition. Le catalogue NAF Factory comprend des
+          hydrofuges, des revêtements cimentaires, des systèmes souples et des mastics Sika. Avant l'application,
+          le support doit être propre, cohésif et correctement réparé. Les angles, fissures et points singuliers
+          doivent être traités avec soin. Consultez toujours la fiche technique officielle afin de respecter
+          les consommations, les temps d'attente et les conditions de mise en œuvre.
+        </p>
+        <h2>Colles à carrelage, joints et primaires Sika</h2>
+        <p>
+          Les colles à carrelage Sika répondent aux besoins de pose intérieure ou extérieure et aux différents
+          formats de carreaux. Les primaires améliorent ou régularisent l'adhérence selon le support, tandis que
+          les joints assurent la finition. Pour comparer les produits, prenez en compte le support, le temps ouvert,
+          la souplesse, la couleur et le conditionnement. Chaque page du catalogue NAF Factory présente les formats,
+          les usages et les documents techniques disponibles pour simplifier la préparation de votre commande.
+        </p>
+        <h2>Mortiers de réparation, scellement et solutions béton Sika</h2>
+        <p>
+          Les mortiers Sika servent à réparer, reproﬁler et protéger les ouvrages en béton. Les produits de scellement
+          sont destinés à l'ancrage, au calage et à la fixation d'équipements. Les adjuvants permettent d'améliorer
+          l'ouvrabilité, de réduire l'eau, de maintenir la consistance ou de contribuer à l'imperméabilisation du béton.
+          Le dosage, le malaxage et la température doivent respecter la notice du fabricant. Pour un projet technique,
+          transmettez les dimensions, les quantités et les contraintes à NAF Factory afin de préparer un devis cohérent.
+        </p>
+        <h2>Disponibilité et demande de devis auprès de NAF Factory</h2>
+        <p>
+          La disponibilité des produits Sika en Algérie peut varier selon la référence et le conditionnement.
+          Sélectionnez les produits nécessaires, vérifiez leurs formats et ajoutez-les au panier de devis.
+          Indiquez ensuite votre société, votre wilaya, les quantités estimées et le délai souhaité. Cette méthode
+          permet à NAF Factory, distributeur agréé, de traiter une demande complète et de vous répondre plus
+          efficacement. Vous pouvez également contacter l'équipe par WhatsApp pour une demande urgente.
+        </p>
       </section>
     </main>`;
 
@@ -105,5 +148,25 @@ const sikaHtml = indexHtml
   )
   .replace('<div id="root"></div>', `<div id="root">${sikaFallbackContent}</div>`);
 
+const legacySikaHtml = indexHtml
+  .replace(/<title>.*?<\/title>/s, "<title>Redirection vers les produits Sika | NAF Factory</title>")
+  .replace(
+    "</head>",
+    `    <meta name="robots" content="noindex,follow" />
+    <meta http-equiv="refresh" content="0; url=${sikaCanonical}" />
+    <link rel="canonical" href="${sikaCanonical}" />
+    <script>window.location.replace(${JSON.stringify(sikaCanonical)});</script>
+  </head>`,
+  )
+  .replace(
+    '<div id="root"></div>',
+    `<div id="root"><p>Cette page a changé d'adresse. <a href="${sikaCanonical}">Consulter les produits Sika en Algérie chez NAF Factory</a>.</p></div>`,
+  );
+
+const newSikaDirectory =
+  "dist/produits-sika-algerie-distributeur-agree-naf-factory";
+await mkdir(newSikaDirectory, { recursive: true });
+await writeFile(`${newSikaDirectory}/index.html`, sikaHtml, "utf8");
+
 await mkdir("dist/produits-sika", { recursive: true });
-await writeFile("dist/produits-sika/index.html", sikaHtml, "utf8");
+await writeFile("dist/produits-sika/index.html", legacySikaHtml, "utf8");
